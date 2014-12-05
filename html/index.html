@@ -1,14 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="zh">
     <meta charset="UTF-8">
     <title>这是 title</title>
     <link rel="stylesheet" href="../css/global.css" type="text/css"/>
+
+    <!--<base> 标签为页面上的所有链接规定默认地址或默认目标（target）：-->
+<!--<head>-->
+    <!--<base href="http://www.w3school.com.cn/images/" />-->
+    <!--<base target="_blank" />-->
+<!--</head>-->
+
+    <!--针对搜索引擎的关键词-->
+    <!--一些搜索引擎会利用 meta 元素的 name 和 content 属性来索引您的页面。-->
+    <!--下面的 meta 元素定义页面的描述：-->
+    <!--<meta name="description" content="Free Web tutorials on HTML, CSS, XML" />-->
+    <!--下面的 meta 元素定义页面的关键词：-->
+    <!--<meta name="keywords" content="HTML, CSS, XML" />-->
+    <!--name 和 content 属性的作用是描述页面的内容。-->
+
+    <!--Google 可以识别的元标记-->
+    <!--https://support.google.com/webmasters/answer/79812?hl=zh-Hans-->
+
 </head>
 <body background="../res/bg.png">
 
 <h1>Aloha!</h1>
 <hr/>
+<p>在 HTML 4.01 中，&lt;!DOCTYPE&gt; 声明引用 DTD，因为 HTML 4.01 基于 SGML。DTD 规定了标记语言的规则，这样浏览器才能正确地呈现内容。
+    HTML5 不基于 SGML，所以不需要引用 DTD。</p>
+
+<p>如需显示小于号，我们必须这样写：&lt; 或 &#60;</p>
+
+<h4></h4>
+<pre>URL 编码
+    URL 只能使用 ASCII 字符集来通过因特网进行发送。
+    由于 URL 常常会包含 ASCII 集合之外的字符，URL 必须转换为有效的 ASCII 格式。
+    URL 编码使用 "%" 其后跟随两位的十六进制数来替换非 ASCII 字符。
+    URL 不能包含空格。URL 编码通常使用 + 来替换空格。</pre>
+
+<pre>ISO 语言代码
+    HTML 的 lang 属性可用于网页或部分网页的语言。这对搜索引擎和浏览器是有帮助的。
+    根据 W3C 推荐标准，您应该通过 html 标签中的 lang 属性对每张页面中的主要语言进行声明，比如：
+        html lang="en"
+        ...
+        /html
+</pre>
+
+<a href="http://www.w3school.com.cn/tags/html_ref_urlencode.html">URL 编码形式表示的 ASCII 字符（十六进制格式）</a><br/>
+<a href="http://www.w3school.com.cn/tags/html_ref_colornames.asp">HTML 颜色名</a><br/>
+<a href="http://www.w3school.com.cn/tags/html_ref_httpmessages.asp">HTTP status code</a><br/>
+
+
 
 <p>aaa</p>
 
