@@ -23,7 +23,124 @@
     <!--https://support.google.com/webmasters/answer/79812?hl=zh-Hans-->
 
 </head>
-<body background="../res/bg.png">
+<body background="../res/bg.png" onload="console.log('body onload',event,this);">
+
+<script type="text/javascript">
+    /**一股腐臭的味道……*/
+    function getCookie(c_name)
+    {
+        if (document.cookie.length>0)
+        {
+            c_start=document.cookie.indexOf(c_name + "=")
+            if (c_start!=-1)
+            {
+                c_start=c_start + c_name.length+1
+                c_end=document.cookie.indexOf(";",c_start)
+                if (c_end==-1) c_end=document.cookie.length
+                return unescape(document.cookie.substring(c_start,c_end))
+            }
+        }
+        return ""
+    }
+
+    function setCookie(c_name,value,expiredays)
+    {
+        var exdate=new Date()
+        exdate.setDate(exdate.getDate()+expiredays)
+        document.cookie=c_name+ "=" +escape(value)+
+        ((expiredays==null) ? "" : "; expires="+exdate.toGMTString())
+    }
+
+    function checkCookie()
+    {
+        username=getCookie('username')
+        if (username!=null && username!="")
+        {alert('Welcome again '+username+'!')}
+        else
+        {
+            username=prompt('Please enter your name:',"")
+            if (username!=null && username!="")
+            {
+                setCookie('username',username,365)
+            }
+        }
+    }
+
+    checkCookie();
+</script>
+
+<button onclick="alert('这是 alert')">Alert</button>
+<button onclick="var conf=confirm('返回 true/false');console.log(conf);this.innerHTML=conf;">Confirm</button>
+<button onclick="var prom=prompt('返回输入值或 null','默认值');console.log(prom);this.innerHTML=prom;">Prompt</button>
+
+<div id="example-navi"></div>
+
+<script>
+
+    txt = "<p>Browser CodeName: " + navigator.appCodeName + "</p>";
+    txt+= "<p>Browser Name: " + navigator.appName + "</p>";
+    txt+= "<p>Browser Version: " + navigator.appVersion + "</p>";
+    txt+= "<p>Cookies Enabled: " + navigator.cookieEnabled + "</p>";
+    txt+= "<p>Platform: " + navigator.platform + "</p>";
+    txt+= "<p>User-agent header: " + navigator.userAgent + "</p>";
+    txt+= "<p>User-agent language: " + navigator.systemLanguage + "</p>";
+
+    document.getElementById("example-navi").innerHTML=txt;
+
+</script>
+
+
+<div id="dom-div"></div>
+
+<p>把鼠标悬停在下面的矩形上可以看到坐标：</p>
+
+<!--事实上，Window.prototype.event-->
+<div id="coordiv" style="float:left;width:199px;height:99px;border:1px solid #c3c3c3"
+     onmousemove="cnvs_getCoordinates(event)"
+     onmouseout="cnvs_clearCoordinates()">
+</div>
+<br>
+
+
+<br />
+<br />
+<br />
+<div id="xycoordinates"></div>
+<br/>
+<hr/>
+<br/>
+<br/>
+
+<!--结论：
+点击的时候：down, up, click
+进去又出来：over, move, move,..., move, out
+辅助点按（右键ww）：只有 down ！
+把 whell 给 preventDefault 之后有点奇妙，“吸住了”
+-->
+<div id="mouse-div" style="background-color: darkorange;width:200px;height:100px"
+        onmousedown="console.log('mouse down',event)"
+        onmouseup="console.log('mouse up',event)"
+        onclick="console.log('click',event)"
+        onmouseover="console.log('mouse over',event)"
+        onmouseout="console.log('mouse out',event)"
+        onmousemove="console.log('mouse move',event)"
+        onmousewheel="console.log('mouse wheel',event);event.preventDefault();"
+        >鼠标测试</div>
+
+
+<canvas id="cvs" width="200" height="100">
+    ooxx
+</canvas>
+
+<button
+        onfocus=""
+        onclick="this.innerHTML='oh god this';
+console.log('before gogo(), this is',this);
+gogo();">GoGoGo</button>
+<p>
+    您会经常看到 document.getElementByID("some id")。这个方法是 HTML DOM 中定义的。
+    DOM（文档对象模型）是用以访问 HTML 元素的正式 W3C 标准。
+</p>
 
 <h1>Aloha!</h1>
 <hr/>
@@ -31,6 +148,10 @@
     HTML5 不基于 SGML，所以不需要引用 DTD。</p>
 
 <p>如需显示小于号，我们必须这样写：&lt; 或 &#60;</p>
+
+<script>
+    document.write("<h1>我们中出了一个标题</h1>")
+</script>
 
 <h4></h4>
 <pre>URL 编码
@@ -50,6 +171,8 @@
 <a href="http://www.w3school.com.cn/tags/html_ref_urlencode.html">URL 编码形式表示的 ASCII 字符（十六进制格式）</a><br/>
 <a href="http://www.w3school.com.cn/tags/html_ref_colornames.asp">HTML 颜色名</a><br/>
 <a href="http://www.w3school.com.cn/tags/html_ref_httpmessages.asp">HTTP status code</a><br/>
+<a href="http://www.w3school.com.cn/jsref/dom_obj_event.asp">HTML DOM Event 对象</a>
+<a href="http://www.w3school.com.cn/jsref/jsref_obj_math.asp">JavaScript Math 对象</a>
 
 
 
@@ -399,8 +522,8 @@
 
 </form>
 
-<iframe src="http://www.v2ex.com" name="iframe_a"></iframe>
-<p><a href="http://h.acfun.tv" target="iframe_a"><del>goto v2ex iframe, </del>open acfunh there</a></p>
+<!--<iframe src="http://www.v2ex.com" name="iframe_a"></iframe>-->
+<!--<p><a href="http://h.acfun.tv" target="iframe_a"><del>goto v2ex iframe, </del>open acfunh there</a></p>-->
 
 <hr/>
 
