@@ -1,0 +1,9 @@
+.console-div{
+    width: 100%;
+    /*height: ;*/
+}
+
+.console-div textarea{
+    background: black;
+    color: limegreen;
+}

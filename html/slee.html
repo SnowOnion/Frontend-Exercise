@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first Three.js app</title>
+    <style>
+        body { margin: 0; }
+        canvas { width: 100%; height: 100% }
+    </style>
+</head>
+<body>
+<script src="../js/three.min.js"></script>
+<script>
+
+    /**
+     *  窝有一个绝好的 idea！
+     *  四维超立方体的三维投影！！！！！！！
+     */
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    // renderer.domElement is a <canvas>
+    document.body.appendChild( renderer.domElement );
+
+    /**
+     * In addition to creating the renderer instance,
+     * we also need to set the size at which we want it to render our app.
+     * It's a good idea to use the width and height of the area we want to fill with our game -
+     * in this case, the width and height of the browser window. For performance intensive games,
+     * you can also give setSize smaller values, like window.innerWidth/2 and window.innerHeight/2,
+     * for half the resolution. (!!!) This does not mean that the game will only fill half the window,
+     * but rather look a bit blurry and scaled up.
+     * */
+
+    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+    var material = new THREE.MeshBasicMaterial( { color: "darkorange" } );
+
+    ////////////
+
+//    var cube = new THREE.Mesh( geometry, material );
+    var cubes=[];
+    var positions=[
+            [0,0,0],
+            [2,0,0],
+            [2,2,0],
+            [0,2,0],
+            [-2,2,0],
+            [-2,0,0],
+            [-2,-2,0],
+            [0,-2,0],
+            [2,-2,0]
+    ];
+    for(var i in positions){
+        var cube = new THREE.Mesh( geometry, material );
+        cube.position.set.apply(cube.position,positions[i]);
+        // store for future handling
+        cubes.push(cube);
+        scene.add( cube );
+//        console.log("position",cube.position);
+    }
+//    cube.position.set(2,2,0);
+//    cube.position.set.apply(cube.position,[2,2,0]); (caller, param_list)
+
+//    scene.add( cube );
+
+
+    ///////
+    camera.position.z = 5;
+
+    /**
+     * Get it~ 坐标系：右是 x+，上是 y+，垂直屏幕向外是 z+
+     * /
+
+    /**
+     * By default, when we call scene.add(), the thing we add will be added to the coordinates (0,0,0).
+     * This would cause both the camera and the cube to be inside each other.(!!!)
+     * To avoid this, we simply move the camera out a bit.
+     */
+
+    var render = function () {
+        requestAnimationFrame( render );
+
+    for(var i in cubes){
+        var cube=cubes[i];
+        cube.rotation.x+=cube.position.x/200;
+        cube.rotation.y+=cube.position.y/200;
+        cube.rotation.z+=cube.position.z/200;
+        // 效果稍微有点奇怪……
+    }
+//        cube.rotation.x += 0.01;
+//        cube.rotation.y += 0.01;
+//        cube.rotation.z += 0.01;
+
+        renderer.render(scene, camera);
+    };
+
+    render();
+
+    /**
+     * This will create a loop that causes the renderer to draw the scene (!!!) 60 times per second.
+     * If you're new to writing games in the browser, you might say "why don't we just
+     * create a setInterval? The thing is - we could, but requestAnimationFrame has
+     * a number of advantages. Perhaps the most important one is that (!!!) it pauses when
+     * the user navigates to another browser tab, hence not wasting their
+     * precious processing power and battery life.
+     */
+
+
+
+ </script>
+</body>
+</html>
