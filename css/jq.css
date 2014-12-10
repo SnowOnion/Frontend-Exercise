@@ -1,0 +1,149 @@
+.console-div{
+    width: 100%;
+    height: 200px;
+    float:left;
+    /*height: ;*/
+}
+
+.console-div textarea{
+    width: 100%;
+    height: 100%;
+    background: black;
+    color: limegreen;
+}
+
+/*选择器分组*/
+/*h1,h3,h5{*/
+    /*color: limegreen;*/
+    /*font-family: Monospaced, monaco, serif;*/
+/*}*/
+
+/*h2,h4,h6{*/
+    /*color:orangered;*/
+    /*font-family: serif,Monospaced, monaco ;*/
+/*}*/
+
+/*通配符选择器
+* {color:red;}
+上面那个星星不是注释辣！
+*/
+
+/*标签名：元素选择器/类型选择器。 可以给 XML 设置样式！！！*/
+/*空格：派生选择器.后代选择器/包含选择器 */
+h2 strong {
+    color: blue;
+}
+h2 {
+    color: green;
+}
+strong {
+    color: red;
+}
+/*效果：具体者优先，与 css 规则 书写顺序无关*/
+
+/*
+id #ID
+class .类名
+attribute！！！
+[title]
+[title=W3School]
+[title~=hello] hello 在 title 属性里必须用空格和其他字符隔开
+[lang|=en] en 在 lang 属性里用连字符（-）和其他字符连起来…… 似乎必须出现在开头……
+
+完整
+[attribute]	用于选取带有指定属性的元素。
+[attribute=value]	用于选取带有指定属性和值的元素。
+[attribute~=value]	用于选取属性值中包含指定词汇的元素。
+[attribute|=value]	用于选取带有以指定值开头的属性值的元素，该值必须是整个单词。
+[attribute^=value]	匹配属性值以指定值开头的每个元素。
+[attribute$=value]	匹配属性值以指定值结尾的每个元素。
+[attribute*=value]	匹配属性值中包含指定值的每个元素。
+看起来好不靠谱…… 有空试一试
+
+一个用法
+input[type="text"]
+input[type="button"]
+*/
+
+/*如果您希望背景色从元素中的文本向外少有延伸，只需增加一些 内边距 padding：*/
+h1 {background-color: gray; padding: 20px;}
+h3 {
+    background-image: url("../res/shota0.jpg");
+    padding: 40px;
+    background-repeat: repeat-y;
+    background-position: 30% 50%;
+    /*background-position: right bottom;*/
+}
+body {
+    background-image: url("../res/bg.png");
+    background-attachment: fixed;
+
+}
+/*
+百分数值同时应用于元素和图像。也就是说，图像中描述为 50% 50% 的点（中心点）与元素中描述为 50% 50% 的点（中心点）对齐。
+Whereas 指定绝对位置改变的是图片左上角的坐标
+*/
+/*
+下面是等价的位置关键字：
+单一关键字	等价的关键字
+center	center center
+top	top center 或 center top
+bottom	bottom center 或 center bottom
+right	right center 或 center right
+left	left center 或 center left
+*/
+
+/*
+Crazy Enough:
+body
+{
+background: #ff0000 url(/i/eg_bg_03.gif) no-repeat fixed center;
+}
+*/
+
+/*
+排版基本 issue：
+缩进（indent）， text-indent
+对齐（align）， text-align
+word 间隔（word 在 CSS 中指任何由非空白字符组成并由空白字符包围的串）， word-spacing
+字母间隔 letter-spacing
+大小写转换 text-transform
+文本装饰（none，下划/上划/中划线，闪烁（……）） text-decoration:underline overline
+    冲突时：text-decoration 值会替换而不是累积起来。
+空白符（空格，tab，换行）处理 white-space:
+    normal 坍缩所有空白；
+    pre 保留空白，不自动折行；
+    nowrap 不自动折行；
+    pre-wrap 保留空白，自动折行；
+    pre-line 保留换行，自动折行，坍缩其他空白；
+文本方向 direction
+*/
+/*
+巧妙的悬挂缩进
+*/
+.main-div .content-div .hangling-indent {text-indent: -5em; padding-left: 5em;}
+
+/*
+text-align 处理文字的对齐；
+将块级元素或表元素居中，要通过在这些元素上适当地设置左、右外边距来实现。（really？）
+<CENTER> 不仅影响文本，还会把整个元素居中。text-align 不会控制元素的对齐，而只影响内部内容。
+*/
+
+.main-div .content-div .justified {
+    text-align: justify;
+}
+
+
+/**
+Now，字体
+在 CSS 中，有两种不同类型的字体系列名称：
+通用字体系列 - 拥有相似外观的字体系统组合（比如 "Serif" 或 "Monospace"）
+特定字体系列 - 具体的字体系列（比如 "Times" 或 "Courier"）
+
+除了各种特定的字体系列外，CSS 定义了 5 种通用字体系列：
+Serif 字体
+Sans-serif 字体
+Monospace 字体
+Cursive 字体
+Fantasy 字体
+*/

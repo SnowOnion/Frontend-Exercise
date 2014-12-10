@@ -13,6 +13,14 @@ function a(){
 }
 
 function b(){
-    alert(LOG_AREA.val());
-    console.log(LOG_AREA);
+
+}
+
+function x(){
+    //LOG_AREA.attr("style","color:red").val("not so default");
+    LOG_AREA.attr("style","color:red")
+}
+
+function y(){
+    LOG_AREA.attr("style","color:limegreen")
 }
