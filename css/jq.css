@@ -136,6 +136,9 @@ text-align 处理文字的对齐；
 
 /**
 Now，字体
+
+# Font Family
+
 在 CSS 中，有两种不同类型的字体系列名称：
 通用字体系列 - 拥有相似外观的字体系统组合（比如 "Serif" 或 "Monospace"）
 特定字体系列 - 具体的字体系列（比如 "Times" 或 "Courier"）
@@ -147,3 +150,51 @@ Monospace 字体
 Cursive 字体
 Fantasy 字体
 */
+
+body {
+    font-family: monospace;
+}
+
+/*写一个通用 font family 用作 fallback*/
+/*字体名包括空格，$ 或 # 时，需要引号，单双均可。*/
+h1,h2,h3{
+    font-family: 'Times New Roman',serif;
+}
+h1{
+    font-style: italic;
+}
+h2,h3{
+    font-style: oblique;
+}
+
+h3{
+    font-size: 40px;
+}
+
+/*
+1em 等于当前的字体尺寸。如果一个元素的 font-size 为 16 像素，那么对于该元素，1em 就等于 16 像素。
+在设置字体大小时，em 的值会相对于父元素的字体大小改变。
+浏览器中默认的文本大小是 16 像素。因此 1em 的默认尺寸是 16 像素。
+
+
+结合使用百分比和 EM
+在所有浏览器中均有效的方案是为 body 元素（父元素）以百分比设置默认的 font-size 值：
+实例
+body {font-size:100%;}
+h1 {font-size:3.75em;}
+h2 {font-size:2.5em;}
+p {font-size:0.875em;}
+*/
+
+/*
+链接样式
+*/
+
+/*天了噜：
+顺序必须是：
+[{visited, link}, hover, active]
+*/
+a:link {color:#FF0000;}		/* 未被访问的链接 */
+a:visited {color:#00FF00;}	/* 已被访问的链接 */
+a:hover {color:#FF00FF;}	/* 鼠标指针移动到链接上 */
+a:active {color:#0000FF;}	/* 正在被点击的链接 */
