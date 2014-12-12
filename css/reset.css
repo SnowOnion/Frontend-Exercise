@@ -1,0 +1,221 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+body, button, input, select, textarea {
+    font: 12px/1.5 tahoma, arial, \5b8b\4f53;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+address, cite, dfn, em, var {
+    font-style: normal;
+}
+code, kbd, pre, samp {
+    font-family: courier new, courier, monospace;
+}
+small {
+    font-size: 12px;
+}
+ul, ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+sup {
+    vertical-align: text-top;
+}
+sub {
+    vertical-align: text-bottom;
+}
+legend {
+    color: #000;
+}
+fieldset, img {
+    border: 0;
+}
+button, input, select, textarea {
+    font-size: 100%;
+}
+button {
+    cursor: pointer
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+html {
+    zoom: expression((function(ele){ele.style.zoom = "1";document.execCommand("BackgroundImageCache",false,true);})(this));
+}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, s, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+article, aside, details, summary, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+del {
+    text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+@font-face {
+	font-family: "iconfont";
+	src: url("http://g.tbcdn.cn/tb/icon-font/1.1.5/iconfont.eot?#iefix") format("embedded-opentype"), url("http://g.tbcdn.cn/tb/icon-font/1.1.5/iconfont.woff") format("woff"), url("http://g.tbcdn.cn/tb/icon-font/1.1.5/iconfont.ttf") format("truetype"), url("http://g.tbcdn.cn/tb/icon-font/1.1.5/iconfont.svg#uxiconfont") format("svg");
+}
+.iconfont {
+	font-family: iconfont;
+	font-size: 12px;
+	font-style: normal;
+}
+@font-face {
+  font-family: 'FontAwesome';
+
+  src: url('http://m.alicdn.com/apps_backstage_wd/wd/img/fontawesome-webfont.eot?v=4.0.3');
+  src: url('http://m.alicdn.com/apps_backstage_wd/wd/img/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'), url('http://m.alicdn.com/apps_backstage_wd/wd/img/fontawesome-webfont.woff?v=4.0.3') format('woff'), url('http://m.alicdn.com/apps_backstage_wd/wd/img/fontawesome-webfont.ttf?v=4.0.3') format('truetype'), url('http://m.alicdn.com/apps_backstage_wd/wd/img/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.hidden{
+	display: none;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+
+
+::-webkit-scrollbar-track-piece {
+	background-color: #fff;
+	-webkit-border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #b8c9d9;
+	-webkit-border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #afc3d6;
+	-webkit-border-radius: 4px;
+}
+
+
+
+ * html .clearfix {
+    height: 1%;
+}
+.clearfix {
+    display: block;
+}
+.has-trans {
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+body {
+    font: 12px/1.5 "微软雅黑", "宋体", "Lucida Grande", Helvetica, Arial, Verdana, Microsoft YaHei, sans-serif
+}
+.k2-font-song {
+    font-family: \5b8b\4f53, arial
+}
+.k2-font-hei {
+    font-family: \9ed1\4f53, arial
+}
+.k2-fix-float:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both
+}
+.k2-fix-float {
+    *zoom: 1
+}
+.k2-display-none {
+    position: absolute;
+    visibility: hidden
+}
+.k2-inline-block {
+    display: -moz-inline-stack;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align:middle;
+    position: relative;
+    _position: static
+}
+.k2-inline-block-icon {
+    display: -moz-inline-stack;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    padding: 0;
+    vertical-align: middle;
+    font-size: 0;
+    line-height: 9999px;
+    overflow: hidden;
+    position: relative;
+    _position: static
+}
+.k2-break-word {
+    word-wrap: break-word;
+    overflow: hidden
+}
+wbr:after {
+    content: "\00200B"
+}
+body, legend {
+    color: #666
+}
+a:link, a:visited, .k2-highlight-blue {
+    color: #ff6600;
+    text-decoration:none;
+}
+a:hover, a:active, a.k2-av:hover, a.k2-av:active, .k2-av a:hover, .k2-av a:active, a.k2-highlight, .k2-highlight {
+    color: #ff8f15;
+    text-decoration:none;
+}
+a.k2-av:visited, .k2-av a:visited {
+    color: #800080
+}
+.k2-lowlight {
+    color: #999
+}
+
+i,
+s{
+    text-decoration: none;
+    font-style:normal;
+}
+textarea{
+    resize:none;
+}
+
+
+
+
+
