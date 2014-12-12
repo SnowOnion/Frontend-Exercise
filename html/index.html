@@ -1,22 +1,187 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="zh">
     <meta charset="UTF-8">
     <title>这是 title</title>
     <link rel="stylesheet" href="../css/global.css" type="text/css"/>
-    <style type="text/css">
-        /*h1 {*/
-            /*color: blue;*/
-        /*}*/
-    </style>
+
+    <!--<base> 标签为页面上的所有链接规定默认地址或默认目标（target）：-->
+<!--<head>-->
+    <!--<base href="http://www.w3school.com.cn/images/" />-->
+    <!--<base target="_blank" />-->
+<!--</head>-->
+
+    <!--针对搜索引擎的关键词-->
+    <!--一些搜索引擎会利用 meta 元素的 name 和 content 属性来索引您的页面。-->
+    <!--下面的 meta 元素定义页面的描述：-->
+    <!--<meta name="description" content="Free Web tutorials on HTML, CSS, XML" />-->
+    <!--下面的 meta 元素定义页面的关键词：-->
+    <!--<meta name="keywords" content="HTML, CSS, XML" />-->
+    <!--name 和 content 属性的作用是描述页面的内容。-->
+
+    <!--Google 可以识别的元标记-->
+    <!--https://support.google.com/webmasters/answer/79812?hl=zh-Hans-->
+
 </head>
-<body background="../res/bg.png">
+<body background="../res/bg.png" onload="console.log('body onload',event,this);">
+
+<script type="text/javascript">
+    /**一股腐臭的味道……*/
+    function getCookie(c_name)
+    {
+        if (document.cookie.length>0)
+        {
+            c_start=document.cookie.indexOf(c_name + "=")
+            if (c_start!=-1)
+            {
+                c_start=c_start + c_name.length+1
+                c_end=document.cookie.indexOf(";",c_start)
+                if (c_end==-1) c_end=document.cookie.length
+                return unescape(document.cookie.substring(c_start,c_end))
+            }
+        }
+        return ""
+    }
+
+    function setCookie(c_name,value,expiredays)
+    {
+        var exdate=new Date()
+        exdate.setDate(exdate.getDate()+expiredays)
+        document.cookie=c_name+ "=" +escape(value)+
+        ((expiredays==null) ? "" : "; expires="+exdate.toGMTString())
+    }
+
+    function checkCookie()
+    {
+        username=getCookie('username')
+        if (username!=null && username!="")
+        {alert('Welcome again '+username+'!')}
+        else
+        {
+            username=prompt('Please enter your name:',"")
+            if (username!=null && username!="")
+            {
+                setCookie('username',username,365)
+            }
+        }
+    }
+
+    checkCookie();
+</script>
+
+<button onclick="alert('这是 alert')">Alert</button>
+<button onclick="var conf=confirm('返回 true/false');console.log(conf);this.innerHTML=conf;">Confirm</button>
+<button onclick="var prom=prompt('返回输入值或 null','默认值');console.log(prom);this.innerHTML=prom;">Prompt</button>
+
+<div id="example-navi"></div>
+
+<script>
+
+    txt = "<p>Browser CodeName: " + navigator.appCodeName + "</p>";
+    txt+= "<p>Browser Name: " + navigator.appName + "</p>";
+    txt+= "<p>Browser Version: " + navigator.appVersion + "</p>";
+    txt+= "<p>Cookies Enabled: " + navigator.cookieEnabled + "</p>";
+    txt+= "<p>Platform: " + navigator.platform + "</p>";
+    txt+= "<p>User-agent header: " + navigator.userAgent + "</p>";
+    txt+= "<p>User-agent language: " + navigator.systemLanguage + "</p>";
+
+    document.getElementById("example-navi").innerHTML=txt;
+
+</script>
+
+
+<div id="dom-div"></div>
+
+<p>把鼠标悬停在下面的矩形上可以看到坐标：</p>
+
+<!--事实上，Window.prototype.event-->
+<div id="coordiv" style="float:left;width:199px;height:99px;border:1px solid #c3c3c3"
+     onmousemove="cnvs_getCoordinates(event)"
+     onmouseout="cnvs_clearCoordinates()">
+</div>
+<br>
+
+
+<br />
+<br />
+<br />
+<div id="xycoordinates"></div>
+<br/>
+<hr/>
+<br/>
+<br/>
+
+<!--结论：
+点击的时候：down, up, click
+进去又出来：over, move, move,..., move, out
+辅助点按（右键ww）：只有 down ！
+把 whell 给 preventDefault 之后有点奇妙，“吸住了”
+-->
+<div id="mouse-div" style="background-color: darkorange;width:200px;height:100px"
+        onmousedown="console.log('mouse down',event)"
+        onmouseup="console.log('mouse up',event)"
+        onclick="console.log('click',event)"
+        onmouseover="console.log('mouse over',event)"
+        onmouseout="console.log('mouse out',event)"
+        onmousemove="console.log('mouse move',event)"
+        onmousewheel="console.log('mouse wheel',event);event.preventDefault();"
+        >鼠标测试</div>
+
+
+<canvas id="cvs" width="200" height="100">
+    ooxx
+</canvas>
+
+<button
+        onfocus=""
+        onclick="this.innerHTML='oh god this';
+console.log('before gogo(), this is',this);
+gogo();">GoGoGo</button>
+<p>
+    您会经常看到 document.getElementByID("some id")。这个方法是 HTML DOM 中定义的。
+    DOM（文档对象模型）是用以访问 HTML 元素的正式 W3C 标准。
+</p>
 
 <h1>Aloha!</h1>
 <hr/>
+<p>在 HTML 4.01 中，&lt;!DOCTYPE&gt; 声明引用 DTD，因为 HTML 4.01 基于 SGML。DTD 规定了标记语言的规则，这样浏览器才能正确地呈现内容。
+    HTML5 不基于 SGML，所以不需要引用 DTD。</p>
+
+<p>如需显示小于号，我们必须这样写：&lt; 或 &#60;</p>
+
+<script>
+    document.write("<h1>我们中出了一个标题</h1>")
+</script>
+
+<h4></h4>
+<pre>URL 编码
+    URL 只能使用 ASCII 字符集来通过因特网进行发送。
+    由于 URL 常常会包含 ASCII 集合之外的字符，URL 必须转换为有效的 ASCII 格式。
+    URL 编码使用 "%" 其后跟随两位的十六进制数来替换非 ASCII 字符。
+    URL 不能包含空格。URL 编码通常使用 + 来替换空格。</pre>
+
+<pre>ISO 语言代码
+    HTML 的 lang 属性可用于网页或部分网页的语言。这对搜索引擎和浏览器是有帮助的。
+    根据 W3C 推荐标准，您应该通过 html 标签中的 lang 属性对每张页面中的主要语言进行声明，比如：
+        html lang="en"
+        ...
+        /html
+</pre>
+
+<a href="http://www.w3school.com.cn/tags/html_ref_urlencode.html">URL 编码形式表示的 ASCII 字符（十六进制格式）</a><br/>
+<a href="http://www.w3school.com.cn/tags/html_ref_colornames.asp">HTML 颜色名</a><br/>
+<a href="http://www.w3school.com.cn/tags/html_ref_httpmessages.asp">HTTP status code</a><br/>
+<a href="http://www.w3school.com.cn/jsref/dom_obj_event.asp">HTML DOM Event 对象</a>
+<a href="http://www.w3school.com.cn/jsref/jsref_obj_math.asp">JavaScript Math 对象</a>
+<a href="http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp">JavaScript RegExp 对象</a>
+
+
+
 <p>aaa</p>
+
 <p>bbb</p>
 <br/>
+
 <p>ccc</p>
 <hr/>
 <p>a<sub>ij</sub><sup>2</sup></p>
@@ -27,11 +192,13 @@
 </pre>
 <hr/>
 <code lang="c">
-    #include<stdio.h></stdio.h>
+    #include
+
 </code>
+
 <p>远古标签 但是 title 很有用 wwwwwww</p>
 <abbr title="etcetera">etc.</abbr>
-<br />
+<br/>
 <del>没说过</del>
 <ins>怎么插</ins>
 <hr/>
@@ -52,7 +219,7 @@
 </a>
 <hr/>
 
-<a href="http://www.w3school.com.cn/" >默认target</a>
+<a href="http://www.w3school.com.cn/">默认target</a>
 <a href="http://www.w3school.com.cn/" target="_blank">target="_blank"</a>
 <a href="http://www.w3school.com.cn/" target="_parent">target="_parent"</a>
 <a href="http://www.w3school.com.cn/" target="_self">target="_self"</a>
@@ -60,7 +227,7 @@
 <hr/>
 
 <a name="label1">锚1（显示在页面上的文本）</a>
-<a href="#label0">跳到锚0  href里写锚&lt;a&gt;的name</a>
+<a href="#label0">跳到锚0 href里写锚&lt;a&gt;的name</a>
 <hr/>
 
 <p>
@@ -71,15 +238,298 @@
 
 <h2>已设置对齐方式的图像：</h2>
 
-<p>图像 <img src ="../res/img1.png" alt="图挂啦" title="指我干啥" align="bottom"> align="bottom"</p>
-<p>图像 <img src ="../res/img1.png" alt="图挂啦" title="指我干啥" align="middle"> align="middle"</p>
-<p>图像 <img src ="../res/img1.png" alt="图挂啦" title="指我干啥" align="top"> align="top"</p>
+<p>图像 <img src="../res/img1.png" alt="图挂啦" title="指我干啥" align="bottom"> align="bottom"</p>
+
+<p>图像 <img src="../res/img1.png" alt="图挂啦" title="指我干啥" align="middle"> align="middle"</p>
+
+<p>图像 <img src="../res/img1.png" alt="图挂啦" title="指我干啥" align="top"> align="top"</p>
 
 <p>请注意，bottom 对齐方式是默认的对齐方式。</p>
 
+<p>上古 ismap 也许还能发挥作用……</p>
 <a href="#">
-    <img src="../res/img1.png" ismap />
+    <img src="../res/img1.png" ismap/>
 </a>
+
+<table border="1">
+    <tr>
+        <td>row 1, cell 1</td>
+        <td>row 1, cell 2</td>
+    </tr>
+    <tr>
+        <td>这是空格&nbsp;这是空格</td>
+        <td>row 2, cell 2</td>
+    </tr>
+</table>
+
+<table border="1">
+    <tr>
+        <td>row 1, cell 1</td>
+        <td>row 1, cell 2</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>row 2, cell 2</td>
+    </tr>
+</table>
+
+<table border="0">
+    <tr>
+        <th>Heading</th>
+        <th>Another Heading</th>
+    </tr>
+    <tr>
+        <td>First</td>
+        <td>Row</td>
+    </tr>
+    <tr>
+        <td>Second</td>
+        <td>Row</td>
+    </tr>
+</table>
+
+<h4>带有普通的边框：</h4>
+<table border="1">
+    <tr>
+        <th>Heading</th>
+        <th>Another Heading</th>
+    </tr>
+    <tr>
+        <td>First</td>
+        <td>Row</td>
+    </tr>
+    <tr>
+        <td>Second</td>
+        <td>Row</td>
+    </tr>
+</table>
+
+<h4>带有粗的边框：</h4>
+<table border="8">
+    <tr>
+        <td>First</td>
+        <td>Row</td>
+    </tr>
+    <tr>
+        <td>Second</td>
+        <td>Row</td>
+    </tr>
+</table>
+
+<h4>带有很粗的边框：</h4>
+<table border="15">
+    <tr>
+        <td>First</td>
+        <td>Row</td>
+    </tr>
+    <tr>
+        <td>Second</td>
+        <td>Row</td>
+    </tr>
+</table>
+
+<h4>一个无序列表：</h4>
+<ul>
+    <li>咖啡</li>
+    <li>茶</li>
+    <li>牛奶</li>
+</ul>
+
+<ol>
+    <li>咖啡</li>
+    <li>牛奶</li>
+    <li>茶</li>
+</ol>
+
+<ol start="50">
+    <li>咖啡</li>
+    <li>牛奶</li>
+    <li>茶</li>
+</ol>
+
+<h4>div 布局大法</h4>
+
+<div class="layout-expr" id="container">
+
+    <div id="header">
+        <h1>Main Title of Web Page</h1>
+    </div>
+
+    <div class="navi" id="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+    </div>
+
+    <div id="content">Content goes here</div>
+
+    <div id="footer">Copyright W3School.com.cn</div>
+
+</div>
+
+<h4>table 布局大法</h4>
+
+<table class="layout-expr" width="1000" border="0">
+    <tr>
+        <td colspan="2" style="background-color:#99bbbb;">
+            <h1>Main Title of Web Page</h1>
+        </td>
+    </tr>
+
+    <tr valign="top">
+        <td class="navi" style="background-color:#ffff99;width:200px;">
+            <h2>Menu</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </td>
+        <td style="background-color:#EEEEEE;height:200px;width:800px;">
+            Content goes here
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" style="background-color:#99bbbb;text-align:center;">
+            Copyright W3School.com.cn
+        </td>
+    </tr>
+</table>
+
+<h2 align="center">TODO: 用一份 CSS 搞 div 和 table 布局</h2>
+<hr/>
+
+<form action="#" method="get">
+    <p>使用 label, 提高鼠标用户可用性</p>
+    <label>
+        首名:
+        <input type="text" name="firstname" value="使用 Embracing Label">
+    </label>
+    <br/>
+    <label for="lastname-id">尾名:</label>
+    <input type="text" name="lastname" id="lastname-id" value="使用 Attached Label"/>
+    <br/>
+    <input type="radio" name="sex" value="male"/> Male
+    <br/>
+    <input type="radio" name="sex" value="female"/> Female
+    <br/>
+    <input type="radio" name="sex" value="other"/> Other
+    <br/>
+    <input type="checkbox" name="bike"/>
+    I have a bike
+    <br/>
+    <input type="checkbox" name="car"/>
+    I have a car
+    <br/>
+
+    <label>
+        已有座驾：
+        <select name="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="fiat" selected="selected">Fiat</option>
+            <option value="audi">Audi</option>
+        </select>
+    </label>
+    <br/>
+
+    预期座驾
+    <select>
+        <optgroup label="Swedish Cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+        </optgroup>
+        <optgroup label="German Cars">
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </optgroup>
+        <optgroup label="Alien Cars" disabled="disabled">
+            <option value="t" selected="selected">Tesla</option>
+            <option value="g">Gozilla</option>
+        </optgroup>
+    </select>
+    <br/>
+
+    <label>
+        <textarea rows="10" cols="30">
+            The cat was playing in the garden.
+        </textarea>
+    </label>
+    <br/>
+    textarea 要手动换行呀……<br/>
+
+    <fieldset name="name_of_field_set_USELESS?">
+        <legend>健康信息</legend>
+        <label>身高：
+            <input type="text"/>
+        </label>
+        <label>体重：
+            <input type="text"/>
+        </label>
+    </fieldset>
+
+    <fieldset name="name_of_field_set_2_USELESS?" disabled>
+        <legend>更健康信息 对 不可更改 哈哈哈</legend>
+        <label>频率：
+            <input type="text" value="84"/> per
+            <select>
+                <option >day</option>
+                <option selected>week</option>
+                <option >month</option>
+            </select>
+        </label>
+        <label>时长：
+            <input type="text" value="1" />
+            <select>
+                <option >second(s)</option>
+                <option selected>minute(s)</option>
+                <option >hour(s)</option>
+            </select>
+        </label>
+    </fieldset>
+
+    <input type="button" value="Input type = button">
+    <button value="anything">Button</button>
+    <input type="submit" value="Input type = submit"/>
+    <input type="reset" value="Input type = reset"/>
+
+    <p>重要事项：如果在 HTML 表单中使用 button 元素，不同的浏览器会提交不同的值。Internet Explorer 将提交 &lt;button&gt; 与 &lt;/button&gt;之间的文本，而其他浏览器将提交
+        value 属性的内容。请在 HTML 表单中使用 input 元素来创建按钮。</p>
+
+    <p>请始终为按钮规定 type 属性。Internet Explorer 的默认类型是 "button"，而其他浏览器中（包括 W3C 规范）的默认值是 "submit"。</p>
+
+</form>
+
+<hr/>
+
+<form action="mailto:someone@w3school.com.cn" method="post" enctype="text/plain">
+
+    <h3>这个表单会把电子邮件发送到 W3School。</h3>
+    姓名：<br/>
+    <input type="text" name="name" value="yourname" size="20">
+    <br/>
+    电邮：<br/>
+    <input type="text" name="mail" value="yourmail" size="20">
+    <br/>
+    内容：<br/>
+    <input type="text" name="comment" value="yourcomment" size="40">
+    <br/><br/>
+    <input type="submit" value="发送">
+    <input type="reset" value="重置">
+
+</form>
+
+<!--<iframe src="http://www.v2ex.com" name="iframe_a"></iframe>-->
+<!--<p><a href="http://h.acfun.tv" target="iframe_a"><del>goto v2ex iframe, </del>open acfunh there</a></p>-->
+
+<hr/>
+
+<p>仅仅有 16 种颜色名被 W3C 的 HTML4.0 标准所支持。它们是：aqua, black, blue, fuchsia, gray, green, lime, maroon, navy, olive, purple, red, silver, teal, white, yellow。</p>
+
 
 
 <script src="../js/global.js"></script>

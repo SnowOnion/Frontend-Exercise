@@ -1,0 +1,428 @@
+.console-div{
+    width: 100%;
+    height: 200px;
+    float:left;
+    /*height: ;*/
+}
+
+.console-div textarea{
+    width: 100%;
+    height: 100%;
+    background: black;
+    color: limegreen;
+}
+
+/*选择器分组*/
+/*h1,h3,h5{*/
+    /*color: limegreen;*/
+    /*font-family: Monospaced, monaco, serif;*/
+/*}*/
+
+/*h2,h4,h6{*/
+    /*color:orangered;*/
+    /*font-family: serif,Monospaced, monaco ;*/
+/*}*/
+
+/*通配符选择器
+* {color:red;}
+上面那个星星不是注释辣！
+*/
+
+/*标签名：元素选择器/类型选择器。 可以给 XML 设置样式！！！*/
+/*空格：派生选择器.后代选择器/包含选择器 */
+h2 strong {
+    color: blue;
+}
+h2 {
+    color: green;
+}
+strong {
+    color: red;
+}
+/*效果：具体者优先，与 css 规则 书写顺序无关*/
+
+/*
+id #ID
+class .类名
+attribute！！！
+[title]
+[title=W3School]
+[title~=hello] hello 在 title 属性里必须用空格和其他字符隔开
+[lang|=en] en 在 lang 属性里用连字符（-）和其他字符连起来…… 似乎必须出现在开头……
+
+完整
+[attribute]	用于选取带有指定属性的元素。
+[attribute=value]	用于选取带有指定属性和值的元素。
+[attribute~=value]	用于选取属性值中包含指定词汇的元素。
+[attribute|=value]	用于选取带有以指定值开头的属性值的元素，该值必须是整个单词。
+[attribute^=value]	匹配属性值以指定值开头的每个元素。
+[attribute$=value]	匹配属性值以指定值结尾的每个元素。
+[attribute*=value]	匹配属性值中包含指定值的每个元素。
+看起来好不靠谱…… 有空试一试
+
+一个用法
+input[type="text"]
+input[type="button"]
+*/
+
+/*如果您希望背景色从元素中的文本向外少有延伸，只需增加一些 内边距 padding：*/
+h1 {background-color: gray; padding: 20px;}
+h3 {
+    background-image: url("../res/shota0.jpg");
+    padding: 40px;
+    background-repeat: repeat-y;
+    background-position: 30% 50%;
+    /*background-position: right bottom;*/
+}
+body {
+    background-image: url("../res/bg.png");
+    background-attachment: fixed;
+
+}
+/*
+百分数值同时应用于元素和图像。也就是说，图像中描述为 50% 50% 的点（中心点）与元素中描述为 50% 50% 的点（中心点）对齐。
+Whereas 指定绝对位置改变的是图片左上角的坐标
+*/
+/*
+下面是等价的位置关键字：
+单一关键字	等价的关键字
+center	center center
+top	top center 或 center top
+bottom	bottom center 或 center bottom
+right	right center 或 center right
+left	left center 或 center left
+*/
+
+/*
+Crazy Enough:
+body
+{
+background: #ff0000 url(/i/eg_bg_03.gif) no-repeat fixed center;
+}
+*/
+
+/*
+排版基本 issue：
+缩进（indent）， text-indent
+对齐（align）， text-align
+word 间隔（word 在 CSS 中指任何由非空白字符组成并由空白字符包围的串）， word-spacing
+字母间隔 letter-spacing
+大小写转换 text-transform
+文本装饰（none，下划/上划/中划线，闪烁（……）） text-decoration:underline overline
+    冲突时：text-decoration 值会替换而不是累积起来。
+空白符（空格，tab，换行）处理 white-space:
+    normal 坍缩所有空白；
+    pre 保留空白，不自动折行；
+    nowrap 不自动折行；
+    pre-wrap 保留空白，自动折行；
+    pre-line 保留换行，自动折行，坍缩其他空白；
+文本方向 direction
+*/
+/*
+巧妙的悬挂缩进
+*/
+.main-div .content-div .hangling-indent {text-indent: -5em; padding-left: 5em;}
+
+/*
+text-align 处理文字的对齐；
+将块级元素或表元素居中，要通过在这些元素上适当地设置左、右外边距来实现。（really？）
+<CENTER> 不仅影响文本，还会把整个元素居中。text-align 不会控制元素的对齐，而只影响内部内容。
+*/
+
+.main-div .content-div .justified {
+    text-align: justify;
+}
+
+
+/**
+Now，字体
+
+# Font Family
+
+在 CSS 中，有两种不同类型的字体系列名称：
+通用字体系列 - 拥有相似外观的字体系统组合（比如 "Serif" 或 "Monospace"）
+特定字体系列 - 具体的字体系列（比如 "Times" 或 "Courier"）
+
+除了各种特定的字体系列外，CSS 定义了 5 种通用字体系列：
+Serif 字体
+Sans-serif 字体
+Monospace 字体
+Cursive 字体
+Fantasy 字体
+*/
+
+body {
+    font-family: monospace;
+}
+
+/*写一个通用 font family 用作 fallback*/
+/*字体名包括空格，$ 或 # 时，需要引号，单双均可。*/
+h1,h2,h3{
+    font-family: 'Times New Roman',serif;
+}
+h1{
+    font-style: italic;
+}
+h2,h3{
+    font-style: oblique;
+}
+
+h3{
+    font-size: 40px;
+}
+
+/*
+1em 等于当前的字体尺寸。如果一个元素的 font-size 为 16 像素，那么对于该元素，1em 就等于 16 像素。
+在设置字体大小时，em 的值会相对于父元素的字体大小改变。
+浏览器中默认的文本大小是 16 像素。因此 1em 的默认尺寸是 16 像素。
+
+
+结合使用百分比和 EM
+在所有浏览器中均有效的方案是为 body 元素（父元素）以百分比设置默认的 font-size 值：
+实例
+body {font-size:100%;}
+h1 {font-size:3.75em;}
+h2 {font-size:2.5em;}
+p {font-size:0.875em;}
+*/
+
+/*
+链接样式
+*/
+
+/*天了噜：
+顺序必须是：
+[{visited, link}, hover, active]
+*/
+/*a:link {color:#FF0000;}		*//* 未被访问的链接 */
+/*a:visited {color:#00FF00;}	*//* 已被访问的链接 */
+/*a:hover {color:#FF00FF;}	*//* 鼠标指针移动到链接上 */
+/*a:active {color:#0000FF;}	*//* 正在被点击的链接 */
+
+
+/*好像很重要！！ 不过这个结合性好像不对*/
+a:link,a:visited .box-a{
+    display:block;
+    font-weight:bold;
+    font-size:14px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    color:#FFFFFF;
+    background-color:#98bf21;
+    width:120px;
+    text-align:center;
+    padding:4px;
+    text-decoration:none;
+}
+
+a:hover,a:active .box-a
+{
+    background-color:#7A991A;
+    color: #FFFFFF;
+}
+
+
+/*CSS 列表属性(list)
+属性	描述
+list-style	简写属性。用于把所有用于列表的属性设置于一个声明中。
+list-style-image	将图象设置为列表项标志。
+list-style-position	设置列表中列表项标志的位置。
+list-style-type	设置列表项标志的类型。*/
+
+ul.none {list-style-type: none}
+ul.disc {list-style-type: disc}
+ul.circle {list-style-type: circle}
+ul.square {list-style-type: square}
+ul.decimal {list-style-type: decimal}
+ul.decimal-leading-zero {list-style-type: decimal-leading-zero}
+ul.lower-roman {list-style-type: lower-roman}
+ul.upper-roman {list-style-type: upper-roman}
+ul.lower-alpha {list-style-type: lower-alpha}
+ul.upper-alpha {list-style-type: upper-alpha}
+ul.lower-greek {list-style-type: lower-greek}
+ul.lower-latin {list-style-type: lower-latin}
+ul.upper-latin {list-style-type: upper-latin}
+ul.hebrew {list-style-type: hebrew}
+ul.armenian {list-style-type: armenian}
+ul.georgian {list-style-type: georgian}
+ul.cjk-ideographic {list-style-type: cjk-ideographic}
+ul.hiragana {list-style-type: hiragana}
+ul.katakana {list-style-type: katakana}
+ul.hiragana-iroha {list-style-type: hiragana-iroha}
+ul.katakana-iroha {list-style-type: katakana-iroha}
+
+div.style-in-one{
+    background-color: #ffff99;
+    padding: 20px;
+}
+ul.style-in-one
+{
+    list-style: square inside url('../res/bg.png')
+}
+
+
+div.table-zone{
+    background-color: #DDDDCC;
+}
+
+table,th,td
+{
+    border:2px solid blue;
+}
+
+table.border-collapse{
+    border-collapse: collapse;
+}
+
+/*这里的padding 就是内边距辣*/
+td{
+    height: 50px;
+    text-align: right;
+    vertical-align: top;
+    padding: 15px;
+    background-image: url("../res/bg.png");
+}
+
+/*让表格里的图乖乖站好*/
+img.cutie{
+    width: 100%;
+    height: 100%;
+}
+
+/*此算法有时会较慢，这是由于它需要在确定最终的布局之前访问表格中所有的内容。
+automatic 没被识别？？？？TODO
+*/
+table.one
+{
+    table-layout: automatic
+}
+table.two
+{
+    table-layout: fixed
+}
+
+/**
+CSS Table 属性
+属性	描述
+border-collapse	设置是否把表格边框合并为单一的边框。
+border-spacing	设置分隔单元格边框的距离。
+caption-side	设置表格标题的位置。
+empty-cells	设置是否显示表格中的空单元格。
+table-layout	设置显示单元、行和列的算法。
+*/
+
+/*
+四个内边距等大。
+百分比用父元素的 width 计算。即使是上下内边距也用 width 算哦！！
+h4{
+    padding: 20%;
+}*/
+
+h4{
+    padding: 10px 0.25em 2ex 20%;
+    border: dashed;
+}
+/*
+等价的！
+但是， 这四个出现矛盾的时候，会怎样？？ TODO
+h4{*/
+    /*padding-top: 10px;*/
+    /*padding-right: 0.25em;*/
+    /*padding-bottom: 2ex;*/
+    /*padding-left: 20%;*/
+/*}*/
+
+
+
+/*
+元素外边距内就是元素的的边框 (border)。元素的边框就是围绕元素内容和内边据的一条或多条线。
+每个边框有 3 个方面：宽度、样式，以及颜色。在下面的篇幅，我们会为您详细讲解这三个方面。
+*/
+
+/*
+写四个：似乎是上右下左
+写俩：上下，左右
+此所谓“值复制”
+当然详细分开写也可以~ border-top-color etc.
+color transparent 透明。譬如链接 非hovor时透明，hovor时有色
+
+margin 可以是 auto。这是默认值。
+
+**/
+
+/*
+卧槽合并 margin……
+http://www.w3school.com.cn/css/css_margin_collapsing.asp
+只有普通文档流中块框的垂直外边距才会发生外边距合并。
+1. 当一个元素出现在另一个元素上面时，第一个元素的下外边距与第二个元素的上外边距会发生合并。
+合并后的值时两者的 max。
+2. 如果不设置 div 的内边距和边框，那么内部 div 的上外边距将与外部 div 的上外边距合并（叠加）。
+3. 假设有一个空元素，它有外边距，但是没有边框或填充。在这种情况下，上外边距与下外边距就碰到了一起，它们会发生合并.
+如果这个外边距遇到另一个元素的外边距，它还会发生合并.
+这就是一系列的段落元素占用空间非常小的原因，因为它们的所有外边距都合并到一起，形成了一个小的外边距。
+*/
+h5{
+    border-style: solid double;
+    border-color: blue rgb(25%,35%,45%) #909090 red;
+    border-width: thin medium thick 20px;
+
+    margin: 5% 10% 15% 20%;
+}
+
+
+.h5-div{
+    border:dashed thin;
+}
+
+.margin-collapsing-zone{
+    padding: 0;
+    border: solid;
+    margin: 0;
+}
+
+.margin-collapsing-top{
+    width:100px;
+    height:30px;
+    /*margin-top:20px;*/
+    margin-bottom:30px;
+    background-color:violet;
+}
+
+.margin-collapsing-bottom{
+    width:100px;
+    height:30px;
+    margin-top:20px;
+    background-color:deepskyblue;
+}
+
+.margin-collapsing-outer {
+    width:150px;
+    height:150px;
+    background-color:violet;
+    /*padding: 1px;*/ /*这个有一点点就会造成 (top)margin 不 collapse！~~*/
+    margin-top:50px;
+}
+
+.margin-collapsing-inner {
+    width:100px;
+    height:100px;
+    /*padding: 10px;*/ /*这个不会影响 margin collapsing*/
+    background-color:deepskyblue;
+    margin-top:100px;
+}
+
+/*
+一切皆为框
+div、h1 或 p 元素常常被称为块级元素。这意味着这些元素显示为一块内容，即“块框”。
+与之相反，span 和 strong 等元素称为“行内元素”，这是因为它们的内容显示在行中，即“行内框”。
+您可以使用 display 属性改变生成的框的类型。这意味着，通过将 display 属性设置为 block，可以让行内元素（比如 <a> 元素）表现得像块级元素一样。
+还可以通过把 display 设置为 none，让生成的元素根本没有框。这样的话，该框及其所有内容就不再显示，不占用文档中的空间。
+*/
+
+/*
+CSS 定位机制
+CSS 有三种基本的定位机制：普通流、浮动和绝对定位。
+除非专门指定，否则所有框都在普通流中定位。也就是说，普通流中的元素的位置由元素在 (X)HTML 中的位置决定。
+块级框从上到下一个接一个地排列，框之间的垂直距离是由框的垂直外边距计算出来。
+行内框在一行中水平布置。可以使用水平内边距、边框和外边距调整它们的间距。但是，垂直内边距、边框和外边距不影响行内框的高度。
+由一行形成的水平框称为行框（Line Box），行框的高度总是足以容纳它包含的所有行内框。不过，设置行高可以增加这个框的高度。
+*/
