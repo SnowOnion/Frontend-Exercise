@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
@@ -7,7 +6,90 @@
 </head>
 <body>
 
+<div>
+    <li>
+        <span>
+            <script>alert('Hurray prpr');</script>
+        </span>
+    </li>
+</div>
+
 <!--<img src="x" onerror="alert('test img onerror');"/>-->
+
+<div class="margin-collapsing-zone">
+    <div class="margin-collapsing-top">h=30 m-b=30</div>
+    <div class="margin-collapsing-bottom">h=30 m-t=20</div>
+</div>
+
+<p>注释：请注意，如果不设置 div 的内边距和边框，那么内部 div 的上外边距将与外部 div 的上外边距合并（叠加）。</p>
+<div class="margin-collapsing-zone">
+    <div class="margin-collapsing-outer">
+        <div class="margin-collapsing-inner">
+            h=100 m-t=100
+        </div>
+        h=150 m-t=50
+    </div>
+</div>
+
+<div class="margin-collapsing-zone"></div>
+
+<div class="table-zone">
+<table>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+    </tr>
+    <tr>
+        <td>Bill</td>
+        <td>Gates</td>
+    </tr>
+    <tr>
+        <td>Steven</td>
+        <td>Jobs</td>
+    </tr>
+    <tr>
+        <td><img class="cutie" src="../res/img1.png"/> </td>
+        <td><img class="cutie" src="../res/shota0.jpg"/></td>
+    </tr>
+</table>
+
+<table class="border-collapse">
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+    </tr>
+    <tr>
+        <td>Bill</td>
+        <td>Gates</td>
+    </tr>
+    <tr>
+        <td>Steven</td>
+        <td>Jobs</td>
+    </tr>
+</table>
+
+
+    <table class="one" border="1" width="100%">
+        <tr>
+            <td width="20%">10000000000000000000000000000000000</td>
+            <td width="40%">10000000</td>
+            <td width="40%">100</td>
+        </tr>
+    </table>
+
+    <br />
+
+    <table class="two" border="1" width="100%">
+        <tr>
+            <td width="20%">10000000000000000000000000000000000</td>
+            <td width="40%">10000000</td>
+            <td width="40%">100</td>
+        </tr>
+    </table>
+
+</div>
+
+<a class="box-a" href="#">I'm not a button</a>
 
 <div class="main-div">
     <div class="title-div"></div>
@@ -66,9 +148,148 @@ jQuery 对象拥有的属性和方法，与 DOM 对象的不同。
 <strong>strong</strong></h2>
 <h3>h3</h3>
 <h4>h4</h4>
-<h5>h5</h5>
+<div class="h5-div">
+    <h5>h5</h5>
+</div>
+
 <h6>h6</h6>
 
+
+<ul class="none">
+    <li>"none" 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="disc">
+    <li>Disc 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="circle">
+    <li>Circle 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="square">
+    <li>Square 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="decimal">
+    <li>Decimal 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="decimal-leading-zero">
+    <li>Decimal-leading-zero 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="lower-roman">
+    <li>Lower-roman 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="upper-roman">
+    <li>Upper-roman 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="lower-alpha">
+    <li>Lower-alpha 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="upper-alpha">
+    <li>Upper-alpha 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="lower-greek">
+    <li>Lower-greek 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="lower-latin">
+    <li>Lower-latin 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="upper-latin">
+    <li>Upper-latin 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="hebrew">
+    <li>Hebrew 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="armenian">
+    <li>Armenian 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="georgian">
+    <li>Georgian 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="cjk-ideographic">
+    <li>Cjk-ideographic 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="hiragana">
+    <li>Hiragana 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="katakana">
+    <li>Katakana 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="hiragana-iroha">
+    <li>Hiragana-iroha 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<ul class="katakana-iroha">
+    <li>Katakana-iroha 类型</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+
+<div class="style-in-one">
+    <ul class="style-in-one">
+        <li>列表 Style 的紧凑写法，而且使用图片点点。</li>
+        <li>咖啡</li>
+        <li>茶</li>
+        <li>可口可乐</li>
+    </ul>
+</div>
 
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
 <script src="../js/jquery.min.js"></script>
