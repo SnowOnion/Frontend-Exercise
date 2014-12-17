@@ -68,15 +68,12 @@ input[type="button"]
 /*如果您希望背景色从元素中的文本向外少有延伸，只需增加一些 内边距 padding：*/
 h1 {background-color: gray; padding: 20px;}
 h3 {
-    background-image: url("../res/shota0.jpg");
     padding: 40px;
-    background-repeat: repeat-y;
-    background-position: 30% 50%;
+    background: url("../res/shota0.jpg") repeat-y 30% 50%;
     /*background-position: right bottom;*/
 }
 body {
-    background-image: url("../res/bg.png");
-    background-attachment: fixed;
+    background: url("../res/bg.png") fixed;
 
 }
 /*
@@ -200,8 +197,9 @@ p {font-size:0.875em;}
 /*a:active {color:#0000FF;}	*//* 正在被点击的链接 */
 
 
-/*好像很重要！！ 不过这个结合性好像不对*/
-a:link,a:visited .box-a{
+/*好像很重要！！
+结合性好像调对了~*/
+.box-a:link,.box-a:visited{
     display:block;
     font-weight:bold;
     font-size:14px;
@@ -214,7 +212,7 @@ a:link,a:visited .box-a{
     text-decoration:none;
 }
 
-a:hover,a:active .box-a
+.box-a:hover,.box-a:active
 {
     background-color:#7A991A;
     color: #FFFFFF;
@@ -264,10 +262,10 @@ div.table-zone{
     background-color: #DDDDCC;
 }
 
-table,th,td
-{
-    border:2px solid blue;
-}
+/*table,th,td*/
+/*{*/
+    /*border:2px solid blue;*/
+/*}*/
 
 table.border-collapse{
     border-collapse: collapse;
@@ -293,7 +291,7 @@ automatic 没被识别？？？？TODO
 */
 table.one
 {
-    table-layout: automatic
+    /*table-layout: automatic*/
 }
 table.two
 {
@@ -311,7 +309,10 @@ table-layout	设置显示单元、行和列的算法。
 */
 
 /*
-四个内边距等大。
+# Padding
+## Padding 不可以是负值哟！
+
+只写一个的效果：四个内边距等大。
 百分比用父元素的 width 计算。即使是上下内边距也用 width 算哦！！
 h4{
     padding: 20%;
@@ -414,15 +415,555 @@ h5{
 一切皆为框
 div、h1 或 p 元素常常被称为块级元素。这意味着这些元素显示为一块内容，即“块框”。
 与之相反，span 和 strong 等元素称为“行内元素”，这是因为它们的内容显示在行中，即“行内框”。
+
 您可以使用 display 属性改变生成的框的类型。这意味着，通过将 display 属性设置为 block，可以让行内元素（比如 <a> 元素）表现得像块级元素一样。
 还可以通过把 display 设置为 none，让生成的元素根本没有框。这样的话，该框及其所有内容就不再显示，不占用文档中的空间。
+display 还有吼多取值…… http://www.w3school.com.cn/cssref/pr_class_display.asp
 */
 
 /*
 CSS 定位机制
 CSS 有三种基本的定位机制：普通流、浮动和绝对定位。
+
 除非专门指定，否则所有框都在普通流中定位。也就是说，普通流中的元素的位置由元素在 (X)HTML 中的位置决定。
 块级框从上到下一个接一个地排列，框之间的垂直距离是由框的垂直外边距计算出来。
+
 行内框在一行中水平布置。可以使用水平内边距、边框和外边距调整它们的间距。但是，垂直内边距、边框和外边距不影响行内框的高度。
 由一行形成的水平框称为行框（Line Box），行框的高度总是足以容纳它包含的所有行内框。不过，设置行高可以增加这个框的高度。
 */
+
+/*
+## position 属性值的含义：
+static
+元素框正常生成。块级元素生成一个矩形框，作为文档流的一部分，行内元素则会创建一个或多个行框，置于其父元素中。
+relative
+元素框偏移某个距离。元素仍保持其未定位前的形状，它原本所占的空间仍保留。
+absolute
+元素框从文档流完全删除，并相对于其包含块定位。包含块可能是文档中的另一个元素或者是初始包含块。元素原先在正常文档流中所占的空间会关闭，就好像元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。
+fixed
+元素框的表现类似于将 position 设置为 absolute，不过其包含块是视窗本身。
+提示：相对定位实际上被看作普通流定位模型的一部分，因为元素的位置相对于它在普通流中的位置。
+
+##
+配合 top right bottom left 属性使用
+于是，“相对” 只能：相对原本位置/相对父元素(包含块)/相对浏览器窗口 了吧……
+
+overflow 属性：当固定宽高时，若内容溢出时的行为。值如 scroll。
+clip:rect(0px 50px 200px 0px) 切图…… 好象是上右下左的 yxyx 值
+图片 行内显示 垂直 align：
+img.top {vertical-align:text-top}
+img.bottom {vertical-align:text-bottom}
+
+z-index 图层！！唔，配合有覆盖的定位使用。
+
+##
+在使用相对定位时，无论是否进行移动，元素仍然占据原来的空间。因此，移动元素会导致它覆盖其它框。
+
+##
+绝对定位的元素的位置相对于最近的已定位祖先元素，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块。
+注释：根据用户代理的不同，最初的包含块可能是画布或 HTML 元素。
+是 dom tree 中最近的？ TODO
+
+*/
+
+/*
+# 浮动
+
+##
+浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。
+由于浮动框不在文档的普通流中，所以文档的普通流中的块框表现得就像浮动框不存在一样。
+
+任何元素都可以浮动。浮动元素会生成一个块级框，而不论它本身是何种元素。
+
+float: left right none inherit
+
+clear: left right both
+规定哪一侧不允许出现浮动元素。
+*/
+
+/*/// 利用 float 来布局 ///*/
+
+div.container
+{
+    width:100%;
+    margin:0;
+    border:1px solid gray;
+    line-height:150%;
+}
+div.header,div.footer
+{
+    padding:0.5em;
+    color:white;
+    background-color:gray;
+    clear:left;
+}
+h1.header
+{
+    padding:0;
+    margin:0;
+}
+div.left
+{
+    float:left;
+    width:20%;
+    margin:0;
+    padding:1em;
+}
+div.content
+{
+    /*margin-left:190px; *//*左侧导航栏宽160，于是右侧内容栏的左margin 190…… 猥琐*/
+    float: left;
+    width: 70%; /*哦页！ 同向浮动+留出一定空隙的百分比分割，完成了同样的但（对缩放）适应性更好的布局~*/
+    border-left:1px solid gray; /*啊 那根竖线*/
+    padding:1em;
+
+}
+
+.first-letter-strong strong{
+    font-size: 500%;
+    float: left;
+    color: inherit;
+    /*vertical-align: text-top;*/
+    line-height: 80%;
+    width: 0.7em; /** 不知其所以然…… http://www.w3school.com.cn/tiy/t.asp?f=csse_float4 TODO */
+}
+
+/* 上：其实我想选择“.content 里的第一个 p” TODO */
+
+/*/// 水平导航条！！ ///*/
+
+.h-navigator{
+    /*position: fixed;*/
+}
+
+.h-navigator ul
+{
+    float:left;
+    width:100%;
+    padding:0;
+    margin:0;
+    list-style-type:none;
+}
+.h-navigator a
+{
+    float:left;
+    width:7em;
+    text-decoration:none;
+    color:white;
+    background-color:purple;
+    padding:0.2em 0.6em;
+    border-right:1px solid white;
+}
+.h-navigator a:hover {background-color:#ff3300}
+.h-navigator li {display:inline} /*把 li 强行行内显示 吊吊的。*/
+.h-navigator-clear{
+    clear: both;
+}
+/**!! 加无意义 Clear 大法~~*/
+
+
+/*
+让我们更详细地看看浮动和清理。假设希望让一个图片浮动到文本块的左边，
+并且希望这幅图片和文本包含在另一个具有背景颜色和边框的元素中。
+http://www.w3school.com.cn/css/css_positioning_floating.asp
+*/
+
+.news {
+    background-color: gray;
+    border: solid 1px black;
+    /*margin: 2px;*/
+    /*padding: 4px;*/
+}
+
+.news img {
+    float: left;
+}
+
+.news p {
+    float: right;
+}
+.news p.left{
+    float: left;
+}
+
+.news .news-clear{
+    clear: both;
+}
+
+
+/** now, 好好说说选择器 **/
+
+/**
+##
+在 HTML 中，一个 class 值中可能包含一个词列表，各个词之间用空格分隔。
+"多类选择器"。<(<=?)IE7 不能正确处理多类选择器。
+
+##
+没有 "多 ID 选择器"。
+
+## 属性选择器
+[属性名] 存在该属性
+[属性名="值"] 准确匹配
+[属性名~="值"] 部分匹配
+### 子串匹配属性选择器
+[abc^="def"]	选择 abc 属性值以 "def" 开头的所有元素
+[abc$="def"]	选择 abc 属性值以 "def" 结尾的所有元素
+[abc*="def"]	选择 abc 属性值中包含子串 "def" 的所有元素 TODO 和 ~= 的区别？
+### 特定属性选择器
+[lang|="en"] {color: red;}  选择 lang 属性等于 en 或以 en- 开头的所有元素。常用于匹配语言。
+That's all, thank you w3school~
+
+## 或且非
+连起来写：且
+
+## 后代选择器 用空格
+（descendant selector）又称为包含选择器。
+h1 em {color:red;}
+上面这个规则会把作为 h1 元素后代的 em 元素的文本变为 红色。当然，可以不是直接后代。
+
+## 子元素选择器 用大于号 >
+（Child selectors）只能选择作为某元素子元素的元素。
+
+## 相邻兄弟选择器 用加号 +
+（Adjacent sibling selector）可选择紧接在另一元素后的元素，且二者有相同父元素。
+### 一个用法：选择“除了第一个”的：li + li {color:red}
+
+## 综合起来
+table.company td > p
+
+## CSS 伪类 用冒号 :
+(Pseudo-classes)
+### 超链接
+a:link {color: #FF0000}
+a:visited {color: #00FF00}
+a:hover {color: #FF00FF}
+a:active {color: #0000FF}
+顺序：*，hovor，active
+### input:focus
+### xxx:first-child
+xxx 【本身】作为父元素的第一个孩子的时候
+### :lang(lang值)
+q:lang(moe)
+{
+quotes: "~" "~"
+}
+
+## CSS 伪元素
+### 块级元素:first-line
+### 块级元素:first-letter
+###
+h1:before
+  {
+  content:url(logo.gif);
+  }
+###
+h1:after
+  {
+  content:url(logo.gif);
+  }
+
+*/
+
+p.important {font-weight:bold;}
+p.warning {font-style:italic;}
+p.important.warning {background:orangered;}
+
+q:lang(moe)
+{
+    quotes: "~" "~"
+}
+
+/**
+## 高级与杂项
+
+### 把左和右 margin 设置为 auto，规定的是均等地分配可用的外边距。结果就是居中的元素。
+
+### p 的 line-height 行高
+
+max-width min-height 互文
+
+### CSS 分类属性 (Classification)
+CSS 分类属性允许你控制如何显示元素，设置图像显示于另一元素中的何处，相对于其正常位置来定位元素，使用绝对值来定位元素，以及元素的可见度。
+属性	描述
+clear	设置一个元素的侧面是否允许其他的浮动元素。
+cursor	规定当指向某元素之上时显示的指针类型。
+display	设置是否及如何显示元素。
+float	定义元素在哪个方向浮动。
+position	把元素放置到一个静态的、相对的、绝对的、或固定的位置中。
+visibility	设置元素是否可见或不可见。
+
+### 水平导航栏
+有两种创建水平导航栏的方法。使用行内或浮动列表项。
+
+### 透明
+img,div
+{
+opacity:0.4;
+filter:alpha(opacity=40);  针对 IE8 以及更早的版本
+}
+值越小越透明。小透明。
+
+
+### @media规则
+@media 规则使你有能力在相同的样式表中，使用不同的样式规则来针对不同的媒介。
+
+某些 CSS 属性仅仅被设计为针对某些媒介。比方说 "voice-family" 属性被设计为针对听觉用户终端。其他的属性可被用于不同的媒介。例如，"font-size" 属性可被用于显示器以及印刷媒介，但是也许会带有不同的值。显示器上面的显示的文档通常会需要比纸媒介文档更大的字号，同时，在显示器上，sans-serif 字体更易阅读，而在纸媒介上，serif 字体更易阅读。
+
+@media screen
+{
+p.test {font-family:verdana,sans-serif; font-size:14px}
+}
+
+@media print
+{
+p.test {font-family:times,serif; font-size:10px}
+}
+
+@media screen,print
+{
+p.test {font-weight:bold}
+}
+
+// 太有情怀了卧槽
+
+媒介类型	描述
+all	用于所有的媒介设备。
+aural	用于语音和音频合成器。
+braille	用于盲人用点字法触觉回馈设备。
+embossed	用于分页的盲人用点字法打印机。
+handheld	用于小的手持的设备。
+print	用于打印机。
+projection	用于方案展示，比如幻灯片。
+screen	用于电脑显示器。
+tty	用于使用固定密度字母栅格的媒介，比如电传打字机和终端。
+tv	用于电视机类型的设备。
+
+
+### Internet Explorer Behaviors
+它是什么？Internet Explorer 5 引入了行为 (behaviors)。behaviors 是一种通过使用 CSS 向 HTML 元素添加行为的方法。
+为什么要避免它？只有 Internet Explorer 支持 behavior 属性。
+用什么代替？请使用 JavaScript 和 HTML DOM 取而代之。
+*/
+a{
+    text-underline: none;
+}
+.principle{
+    max-width: 700px;
+    border: dotted 1px;
+}
+
+.opacity-bg{
+    background-image: url("../res/star.jpeg");
+    padding: 30px;
+}
+
+.opacity-content{
+    background-color: honeydew;
+    padding: 10px;
+    /*margin: 20px;*/
+    opacity: 0.6; filter:alpha(opacity=60);
+}
+
+.opacity-content:hover{
+    opacity: 0.9; filter:alpha(opacity=90);
+}
+
+/** now, something new in CSS3 */
+
+div.border-radius
+{
+    text-align:center;
+    border:2px solid #a1a1a1;
+    padding:10px 40px;
+    background:#dddddd;
+    width:350px;
+    border-radius:25px;
+    -moz-border-radius:25px; /* 老的 Firefox */
+}
+
+div.box-shadow
+{
+    text-align: center;
+    width:300px;
+    height:100px;
+    background-color:#ff9900;
+    -moz-box-shadow: 10px 10px 5px #888888; /* 老的 Firefox */
+    box-shadow: 10px 10px 5px #888888;
+}
+
+div.bg-border-box, div.bg-padding-box, div.bg-content-box{
+    border: dashed 20px darkorange;
+    padding: 50px;
+    margin: 20px;
+    background: url("../res/star.jpeg") no-repeat;
+    color:yellowgreen;
+
+}
+
+div.bg-border-box{
+    background-origin: border-box;
+}
+
+div.bg-padding-box{
+    background-origin: padding-box;
+}
+
+div.bg-content-box{
+    background-origin: content-box;
+}
+
+
+h1
+{
+    /*水平阴影、垂直阴影、模糊距离，以及阴影的颜色：*/
+    text-shadow: 5px 5px 5px #00FF00;
+}
+
+p.wrap-and-shadow,p.no-wrap
+{
+    width:11em;
+    font-family: monospace;
+    border:1px solid #000000;
+    text-shadow: 0px 0px 30px yellow;
+}
+
+p.wrap-and-shadow{
+    word-wrap: break-word;
+}
+
+/*Util*/
+table.cheat-sheet{
+    display: table;
+    border-spacing: 2px;
+    margin-top: 10px;
+    border-collapse: collapse;
+    border: 1px solid #000;
+    width: 100%;
+}
+
+table.cheat-sheet td,table.cheat-sheet th{
+    border: 1px solid #000;
+    height: auto;
+}
+/*/Util*/
+
+@font-face
+{
+    font-family: Sansation-Light;
+    src: url('../res/font/Sansation_Light.ttf'),
+    url('../res/font/Sansation_Light.eot'); /* IE9+ */
+    /*font-weight: normal;*/
+}
+
+@font-face
+{
+    font-family: Sansation-Light;
+    src: url('../res/font/Sansation_Bold.ttf')
+    ,url('../res/font/Sansation_Bold.eot'); /* IE9+ */
+    font-weight:bold;
+}
+
+div.Sansation-Light
+{
+    font-family:Sansation-Light;
+}
+
+
+
+#perspective-div-out
+{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    margin: 50px;
+    padding:10px;
+    border: 1px solid black;
+    perspective:150;
+    -webkit-perspective: 150; /* Safari and Chrome */
+}
+
+#perspective-div-in
+{
+    padding:50px;
+    position: absolute;
+    border: 1px solid black;
+    /*background-color: yellow;*/
+    transform: rotateY(30deg);
+    -webkit-transform: rotateY(30deg); /* Safari and Chrome */
+}
+
+div.tran-width
+{
+    width:100px;
+    height:100px;
+    background:yellow;
+    transition:width 2s;
+    -moz-transition:width 2s; /* Firefox 4 */
+    -webkit-transition:width 2s; /* Safari and Chrome */
+    -o-transition:width 2s; /* Opera */
+    text-align: center;
+}
+
+div.tran-width:hover{
+    width: 200px;
+}
+
+div.trans-multi
+{
+    width:100px;
+    height:100px;
+    background:yellow;
+    transition:width 2s, height 2s;
+    -moz-transition:width 2s, height 2s, -moz-transform 2s; /* Firefox 4 */
+    -webkit-transition:width 2s, height 2s, -webkit-transform 2s; /* Safari and Chrome */
+    -o-transition:width 2s, height 2s, -o-transform 2s; /* Opera */
+}
+
+div.trans-multi:hover
+{
+    width:200px;
+    height:200px;
+    transform:rotate(180deg);
+    -moz-transform:rotate(180deg); /* Firefox 4 */
+    -webkit-transform:rotate(180deg); /* Safari and Chrome */
+    -o-transform:rotate(180deg); /* Opera */
+}
+
+
+
+#div1,#div2,#div3,#div4,#div5
+{
+    width:100px;
+    height:50px;
+    background:red;
+    color:white;
+    font-weight:bold;
+    position:relative;
+    animation:mymove 5s infinite;
+    -webkit-animation:mymove 5s infinite; /* Safari and Chrome */
+}
+
+#div1 {animation-timing-function:cubic-bezier(0,0,0.25,1);}
+#div2 {animation-timing-function:cubic-bezier(0.25,0.1,0.25,1);}
+#div3 {animation-timing-function:cubic-bezier(0.42,0,1,1);}
+#div4 {animation-timing-function:cubic-bezier(0,0,0.58,1);}
+#div5 {animation-timing-function:cubic-bezier(0.42,0,0.58,1);}
+
+/* Safari and Chrome: */
+#div1 {-webkit-animation-timing-function:cubic-bezier(0,0,1,1);}
+#div2 {-webkit-animation-timing-function:cubic-bezier(0.25,0.1,0.25,1);}
+#div3 {-webkit-animation-timing-function:cubic-bezier(0.42,0,1,1);}
+#div4 {-webkit-animation-timing-function:cubic-bezier(0,0,0.58,1);}
+#div5 {-webkit-animation-timing-function:cubic-bezier(0.42,0,0.58,1);}
+
+@keyframes mymove
+{
+    from {left:0px;}
+    to {left:300px;}
+}
+
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+    from {left:0px;}
+    to {left:300px;}
+}

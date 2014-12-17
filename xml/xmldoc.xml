@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="../css/xmldoc.css"?>
+<note>
+    <to>George</to>
+    <from>John</from>
+    <heading>Reminder</heading>
+    <body>Don't forget the meeting!</body>
+    <comment>Ok maybe xslt is more awesome than assigning style to xml directly.</comment>
+</note>

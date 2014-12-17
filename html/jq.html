@@ -1,20 +1,393 @@
 <!DOCTYPE html>
+<html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="../css/jq.css" type="text/css"/>
 </head>
+
 <body>
 
-<div>
-    <li>
-        <span>
-            <script>alert('Hurray prpr');</script>
-        </span>
-    </li>
+<!--<img src="x" onerror="alert('test img onerror');"/>-->
+
+<pre>新的用户界面属性
+下面的表格列出了所有的转换属性：
+属性	描述	CSS
+appearance	允许您将元素设置为标准用户界面元素的外观	3
+box-sizing	允许您以确切的方式定义适应某个区域的具体内容。	3
+icon	为创作者提供使用图标化等价物来设置元素样式的能力。	3
+nav-down	规定在使用 arrow-down 导航键时向何处导航。	3
+nav-index	设置元素的 tab 键控制次序。	3
+nav-left	规定在使用 arrow-left 导航键时向何处导航。	3
+nav-right	规定在使用 arrow-right 导航键时向何处导航。	3
+nav-up	规定在使用 arrow-up 导航键时向何处导航。	3
+outline-offset	对轮廓进行偏移，并在超出边框边缘的位置绘制轮廓。	3
+resize	规定是否可由用户对元素的尺寸进行调整。	3</pre>
+
+<hr/>
+
+<h2>多列（分栏）</h2>
+<pre>属性	描述	CSS
+column-count	规定元素应该被分隔的列数。	3
+column-fill	规定如何填充列。	3
+column-gap	规定列之间的间隔。	3
+column-rule	设置所有 column-rule-* 属性的简写属性。	3
+column-rule-color	规定列之间规则的颜色。	3
+column-rule-style	规定列之间规则的样式。	3
+column-rule-width	规定列之间规则的宽度。	3
+column-span	规定元素应该横跨的列数。	3
+column-width	规定列的宽度。	3
+columns	规定设置 column-width 和 column-count 的简写属性。	3</pre>
+
+<h2>CSS 动画</h2>
+<pre>吊吊吊！！！
+
+什么是 CSS3 中的动画？
+动画是使元素从一种样式逐渐变化为另一种样式的效果。
+您可以改变任意多的样式任意多的次数。
+请用百分比来规定变化发生的时间，或用关键词 "from" 和 "to"，等同于 0% 和 100%。
+
+    @keyframes myfirst 定义一个动画
+{
+0%   {background: red;}
+25%  {background: yellow;}
+50%  {background: blue;}
+100% {background: green;}
+}
+
+    div
+{
+animation: myfirst 5s; 必须有动画名和时长
+-moz-animation: myfirst 5s;	/* Firefox */
+-webkit-animation: myfirst 5s;	/* Safari 和 Chrome */
+-o-animation: myfirst 5s;	/* Opera */
+}
+
+    CSS3 动画属性
+下面的表格列出了 @keyframes 规则和所有动画属性：
+属性	描述	CSS
+@keyframes	规定动画。	3
+animation	所有动画属性的简写属性，除了 animation-play-state 属性。	3
+animation-name	规定 @keyframes 动画的名称。	3
+animation-duration	规定动画完成一个周期所花费的秒或毫秒。默认是 0。	3
+animation-timing-function	规定动画的速度曲线。默认是 "ease"。	3
+animation-delay	规定动画何时开始。默认是 0。	3
+animation-iteration-count	规定动画被播放的次数。默认是 1。	3
+animation-direction	规定动画是否在下一周期逆向地播放。默认是 "normal"。	3
+animation-play-state	规定动画是否正在运行或暂停。默认是 "running"。	3
+animation-fill-mode	规定对象动画时间之外的状态。	3
+
+    简写顺序：
+    animation-name: myfirst;
+animation-duration: 5s;
+animation-timing-function: linear;
+animation-delay: 2s;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+animation-play-state: running;
+    等于
+animation: myfirst 5s linear 2s infinite alternate;
+</pre>
+<h2>其中的 timing function 吊吊吊</h2>
+<pre>
+linear	动画从头到尾的速度是相同的。	测试
+ease	默认。动画以低速开始，然后加快，在结束前变慢。	测试
+ease-in	动画以低速开始。	测试
+ease-out	动画以低速结束。	测试
+ease-in-out	动画以低速开始和结束。	测试
+cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。	TODO 参数详细
+    <!--TODO-->
+</pre>
+
+<h3>用 cubic-bezier 实现内置时间曲线</h3>
+<div id="div1">linear</div>
+<div id="div2">ease</div>
+<div id="div3">ease-in</div>
+<div id="div4">ease-out</div>
+<div id="div5">ease-in-out</div>
+
+<hr/>
+
+
+<h2>过渡</h2>
+<pre>CSS3 过渡是元素从一种样式逐渐改变为另一种的效果。
+要实现这一点，必须规定两项内容：
+规定您希望把效果添加到哪个 CSS 属性上
+规定效果的时长
+
+如需向多个样式添加过渡效果，请添加多个属性，由逗号隔开
+
+    过渡属性
+下面的表格列出了所有的转换属性：
+属性	描述	CSS
+transition	简写属性，用于在一个属性中设置四个过渡属性。	3
+transition-property	规定应用过渡的 CSS 属性的名称。	3
+transition-duration	定义过渡效果花费的时间。默认是 0。	3
+transition-timing-function	规定过渡效果的时间曲线。默认是 "ease"。	3 吊吊吊！ TODO
+transition-delay	规定过渡效果何时开始。默认是 0。	3
+</pre>
+<div class="tran-width">拉拉拉</div>
+<div class="trans-multi">西斯空寂</div>
+
+<hr/>
+
+<h2>2D/3D 转换</h2>
+<div><pre>2D 转换
+<a href="http://www.w3school.com.cn/css3/css3_2dtransform.asp">http://www.w3school.com.cn/css3/css3_2dtransform.asp</a>
+在本章中，您将学到如下 2D 转换方法：
+
+translate()
+rotate(Adeg) 顺时针旋转 A
+scale()
+skew(Adeg,Bdeg) 中心点不动，水平方向逆时针倾斜 A 角度，竖直方向顺时针倾斜 B 角度
+matrix(a,b,c,d,e,f) 六参数定义变换。
+    ((a c e)  ((x)
+     (b d f) . (y)
+     (0 0 1))  (1))
+x'=ax+cy+e
+y'=bx+dy+f
+
+    p.s. 永图馆是否收录这样的文章？
+http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%E7%9F%A9%E9%98%B5/
+
+    ok mozilla 的文档：
+    https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function
+
+形如 transform:rotate(9deg);
+-webkit- -moz- -ms- -o-
+
+transform-origin: a b c 旋转中心 默认 50% 50% 0
+
+
+    2D Transform 方法
+函数	描述
+matrix(n,n,n,n,n,n)	定义 2D 转换，使用六个值的矩阵。
+translate(x,y)	定义 2D 转换，沿着 X 和 Y 轴移动元素。
+translateX(n)	定义 2D 转换，沿着 X 轴移动元素。
+translateY(n)	定义 2D 转换，沿着 Y 轴移动元素。
+scale(x,y)	定义 2D 缩放转换，改变元素的宽度和高度。
+scaleX(n)	定义 2D 缩放转换，改变元素的宽度。
+scaleY(n)	定义 2D 缩放转换，改变元素的高度。
+rotate(angle)	定义 2D 旋转，在参数中规定角度。
+skew(x-angle,y-angle)	定义 2D 倾斜转换，沿着 X 和 Y 轴。
+skewX(angle)	定义 2D 倾斜转换，沿着 X 轴。
+skewY(angle)	定义 2D 倾斜转换，沿着 Y 轴。
+
+</pre></div>
+
+<h2># 3D 转换</h2>
+<div><pre>
+
+    transform: rotateX(120deg);
+    transform: rotateY(120deg);
+    transform-origin:20% 40%; 旋转中心
+    transform-style: preserve-3D 嵌套元素保留显示…… TODO
+    -webkit-perspective:150; 子元素！具有 150 （单位？ TODO ）的透视。我好兴奋！！
+    -webkit-perspecitve-origin 视点？ 默认 50% 50%
+    backface-visibility 背面是否显示
+
+3D    Transform 方法
+函数	描述
+matrix3d(n,n,n,n,n,n,
+n,n,n,n,n,n,n,n,n,n)	定义 3D 转换，使用 16 个值的 4x4 矩阵。
+translate3d(x,y,z)	定义 3D 转化。
+translateX(x)	定义 3D 转化，仅使用用于 X 轴的值。
+translateY(y)	定义 3D 转化，仅使用用于 Y 轴的值。
+translateZ(z)	定义 3D 转化，仅使用用于 Z 轴的值。
+scale3d(x,y,z)	定义 3D 缩放转换。
+scaleX(x)	定义 3D 缩放转换，通过给定一个 X 轴的值。
+scaleY(y)	定义 3D 缩放转换，通过给定一个 Y 轴的值。
+scaleZ(z)	定义 3D 缩放转换，通过给定一个 Z 轴的值。
+rotate3d(x,y,z,angle)	定义 3D 旋转。
+rotateX(angle)	定义沿 X 轴的 3D 旋转。
+rotateY(angle)	定义沿 Y 轴的 3D 旋转。
+rotateZ(angle)	定义沿 Z 轴的 3D 旋转。
+perspective(n)	定义 3D 转换元素的透视视图。
+
+</pre></div>
+
+<div id="perspective-div-out">
+    <div id="perspective-div-in">
+        <!--Aloha!-->
+        <iframe src="#">嵌套 iframe 什么的不可以！</iframe>
+    </div>
 </div>
 
-<!--<img src="x" onerror="alert('test img onerror');"/>-->
+
+<h2>@font-face</h2>
+<div class="Sansation-Light">Firefox、<b>Chrome</b>、Safari 以及 Opera 支持 .ttf (True Type Fonts) 和 .otf (OpenType Fonts) 类型的字体。<br/>
+Internet Explorer 9+ 支持新的 @font-face 规则，但是仅支持 .eot 类型的字体 (Embedded OpenType)。<br/>
+原来 pre 标签会破坏字体! （或者，对 div 应用字体之后，div 里的 pre 未受影响？）</div>
+
+
+<p class="wrap-and-shadow">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line. 中文可不可以呢。中文可不可以可不可以可不可以可不可以可不可以呢。</p>
+<p class="no-wrap">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line. 中文可不可以呢。中文可不可以可不可以可不可以可不可以可不可以呢。</p>
+<table class="cheat-sheet">
+    <tbody><tr>
+        <th style="width:25%;">属性</th>
+        <th>描述</th>
+        <th style="width:5%;">CSS</th>
+    </tr>
+
+    <tr>
+        <td><a href="#" title="CSS3 hanging-punctuation 属性">hanging-punctuation</a></td>
+        <td>规定标点字符是否位于线框之外。</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td><a href="#" title="CSS3 punctuation-trim 属性">punctuation-trim</a></td>
+        <td>规定是否对标点字符进行修剪。</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>text-align-last</td>
+        <td>设置如何对齐最后一行或紧挨着强制换行符之前的行。</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td><a href="#" title="CSS3 text-emphasis 属性">text-emphasis</a></td>
+        <td>向元素的文本应用重点标记以及重点标记的前景色。</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td><a href="#" title="CSS3 text-justify 属性">text-justify</a></td>
+        <td>规定当  text-align 设置为 "justify" 时所使用的对齐方法。</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td><a href="#" title="CSS3 text-outline 属性">text-outline</a></td>
+        <td>规定文本的轮廓。</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td><a href="#" title="CSS3 text-overflow 属性">text-overflow</a></td>
+        <td>规定当文本溢出包含元素时发生的事情。</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td><a href="#" title="CSS3 text-shadow 属性">text-shadow</a></td>
+        <td>向文本添加阴影。</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td><a href="#" title="CSS3 text-wrap 属性">text-wrap</a></td>
+        <td>规定文本的换行规则。</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td><a href="#" title="CSS3 word-break 属性">word-break</a></td>
+        <td>规定非中日韩文本的换行规则。</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td><a href="#" title="CSS3 word-wrap 属性">word-wrap</a></td>
+        <td>允许对长的不可分割的单词进行分割并换行到下一行。</td>
+        <td>3</td>
+    </tr>
+    </tbody></table>
+
+<div class="border-radius">border-radius 属性允许您向元素添加圆角。</div>
+<div class="box-shadow">I walk in box-shadow.</div>
+<p>border-image 太鬼畜，不知什么时候会用它。</p>
+<p>background-size.</p>
+<p>background-origin 属性规定背景图片的定位区域。<br/>
+    背景图片可以放置于 content-box、padding-box 或 border-box 区域。</p>
+<hr/>
+<div class="bg-border-box">bg-border-box. no-repeat 方显 backgrount-origin 本色。</div>
+<hr/>
+<div class="bg-padding-box">bg-padding-box. no-repeat 方显 backgrount-origin 本色。</div>
+<hr/>
+<div class="bg-content-box">bg-content-box. no-repeat 方显 backgrount-origin 本色。</div>
+<hr/>
+<pre>为 body 元素设置两幅背景图片：
+body
+{
+background-image:url(bg_flower.gif),url(bg_flower_2.gif);
+}</pre>
+<hr/>
+
+<a href="#" style="text-decoration: none;font-weight: bold;padding: -1px;">窝在 W3school CSS 测验中作弊辣！</a>
+
+<div class="opacity-bg">
+    <div class="opacity-content">
+        <p>哼一首悠长的歌 长过了三声到奈何</p>
+        <p>勾一笔缠绵的错 结局又该如何</p>
+    </div>
+</div>
+
+<p class="principle">我是有原则的段落。我有一个最大宽度，拥挤则退让，宽敞也不抢。甚么是原则？原则就是挨饿（principl<strong>e</strong>）；校长总是很色（prin<strong>ci</strong>pal 的 ci 读 /si/, whereas prin<strong>ci</strong>ple 的 ci 读 /sə/。）。</p>
+
+<p lang="moe">
+    萌语的<q>引用</q>使用波浪号。看起来，p 标签的 lang 属性被 q 标签继承了，非常好。
+</p>
+
+<p class="important warning">
+    This paragraph is a very important warning.
+</p>
+<p class="important">This is important.</p>
+<p class="warning">This is a warning.</p>
+
+
+<div class="container">
+    <div class="header"><h1 class="header">让我们用 float 搞起布局</h1></div>
+    <div class="left"><p>"Never increase, beyond what is necessary, the number of entities required to explain anything." William of Ockham (1285-1349)</p></div>
+    <div class="content">
+        <h2>Free Web Building Tutorials</h2>
+        <p class="first-letter-strong"><strong>A</strong>t W3School.com.cn you will find all the Web-building tutorials you need,
+            from basic HTML and XHTML to advanced XML, XSL, Multimedia and WAP.</p>
+        <p>W3School.com.cn - The Largest Web Developers Site On The Net!</p>
+        <p>At W3School.com.cn you will find all the Web-building tutorials you need,
+            from basic HTML and XHTML to advanced XML, XSL, Multimedia and WAP.</p>
+        <p>W3School.com.cn - The Largest Web Developers Site On The Net!</p>
+        <p>At W3School.com.cn you will find all the Web-building tutorials you need,
+            from basic HTML and XHTML to advanced XML, XSL, Multimedia and WAP.</p>
+        <p>W3School.com.cn - The Largest Web Developers Site On The Net!</p>
+    </div>
+    <div class="footer">Copyright 2008 by YingKe Investment.</div>
+</div>
+
+<!------------>
+
+<div class="h-navigator">
+    <ul class="h-navigator">
+        <li><a href="#">Link one</a></li>
+        <li><a href="#">Link two</a></li>
+        <li><a href="#">Link three</a></li>
+        <li><a href="#">Link four</a></li>
+    </ul>
+    <div class="h-navigator-clear"></div>
+</div>
+
+<p>
+    在上面的例子中，我们把 ul 元素和 a 元素浮向左浮动。li 元素显示为行内元素（元素前后没有换行）。这样就可以使列表排列成一行。ul 元素的宽度是 100%，列表中的每个超链接的宽度是 7em（当前字体尺寸的 7 倍）。我们添加了颜色和边框，以使其更漂亮。
+</p>
+
+<!---->
+
+<div class="news">
+    <img src="../res/shota0.jpg" />
+    <p>some text</p>
+    <p class="left">下面为了让外层div包裹这些元素 而在末尾加的一个clear:both的无形div。<br/>
+        如果去掉这个 div，外层 div 就只有 上下border之和+上下padding之和 那么大了……<br/>
+        按照css禅意花园，这可以用 ::after 什么的代替。<br/>
+    王
+        w3school 给出的另外方法：所有大 div float:left，footer div clear:both
+    </p>
+    <div class="news-clear"></div>
+</div>
+
+
 
 <div class="margin-collapsing-zone">
     <div class="margin-collapsing-top">h=30 m-b=30</div>
@@ -138,7 +511,7 @@ jQuery 对象拥有的属性和方法，与 DOM 对象的不同。
 </div>
 
 <div class="console-div">
-    <textarea id="console-area" >Default...</textarea>
+    <label for="console-area"></label><textarea id="console-area" >Default...</textarea>
 </div>
 
 <strong>strong standalone</strong>
