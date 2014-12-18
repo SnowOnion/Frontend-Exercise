@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background-image: url("../res/bg.png");
+        }
+    </style>
+</head>
+<body>
+
+
+<h2>HTML 的新 表单/input 属性</h2>
+<pre># 新的 form 属性：
+autocomplete
+    autocomplete 适用于 form> 标签，以及以下类型的 input> 标签：text, search, url, telephone, email, password, datepickers, range 以及 color。
+novalidate
+
+# 新的 input 属性：
+autocomplete
+    覆盖父 form 的该属性
+autofocus
+    页面加载时
+form
+    表明属于哪个 form. 写 form 的 id. 属于多个，则用空格隔开。
+form overrides (formaction, formenctype, formmethod, formnovalidate, formtarget)
+    表单重写属性适用于以下类型的 input> 标签：submit 和 image。
+    formaction 覆盖父 form 的 action 属性
+    formnovalidate 不校验 email 之类的 input
+height 和 width
+    height 和 width 属性规定用于 image 类型的 input 标签的图像高度和宽度。
+    卧槽原来 input 还有 image 类型的…… 一个图片做按钮。
+list
+    与 datalist 元素配合。输入域的备选。
+min, max 和 step
+multiple
+    multiple 属性适用于以下类型的 input> 标签：email 和 file。
+    可以传多个文件！！
+    <!--TODO-->
+    Email 用什么分隔？
+novalidate
+    不校验
+    novalidate 属性适用于 form> 以及以下类型的 input> 标签：text, search, url, telephone, email, password, date pickers, range 以及 color.
+pattern (regexp)
+    自定义用于校验的正则！！！
+    pattern 属性适用于以下类型的 input> 标签：text, search, url, telephone, email 以及 password。
+placeholder
+    就是 hint。获得焦点后消失。（咦 试了一下是输入东西后消失
+    placeholder 属性适用于以下类型的 input> 标签：text, search, url, telephone, email 以及 password。
+required
+    非空
+    required 属性适用于以下类型的 input> 标签：text, search, url, telephone, email, password, date pickers, number, checkbox, radio 以及 file。
+    抱鹤GG知道不？
+    <!--TODO-->
+</pre>
+
+<p>使用 output 元素的简易计算器：</p>
+<form onsubmit="return false" oninput="resCalc();">
+    <input id="num_a" /> +
+    <input id="num_b" /> =
+    <output id="output-result" ></output>
+</form>
+
+<h2>HTML5 新的 Input 类型</h2>
+<pre>
+    HTML5 拥有多个新的表单输入类型。这些新特性提供了更好的输入控制和验证。
+    本章全面介绍这些新的输入类型：
+    email
+    url
+    number
+    range
+    Date pickers (date, month, week, time, datetime, datetime-local)
+    search
+    color</pre>
+
+<form action="#" method="get">
+    <input type="submit" /><br/>
+    <label>
+        E-mail:
+        <input type="email" name="user_email"/>
+    </label><br />
+    <label>
+        Homepage:
+        <input type="url" name="user_url"/>怎么感觉这个不靠谱啊摔！www.baidu.com，http://www.baidu.com 都不行……
+    </label><br />
+    <label>
+        Points:
+        <input type="number" name="pointA" min="1" max="10"/> 允许科学计数法 BASEePOWER_OF_TEN，但服务端受得了么……
+        <pre>max	number	规定允许的最大值
+min	number	规定允许的最小值
+step	number	规定合法的数字间隔（如果 step="3"，则合法的数是 -3,0,3,6 等）
+value	number	规定默认值</pre>
+    </label>
+    <label>
+        Range:
+        <input type="range" name="pointB" min="1" max="10" step="3" value="4" onchange="$('#range-ref').html(this.value);" />
+        <span id="range-ref">Value</span>
+    </label><br/>
+
+    <label>
+        Date:
+        <input type="date" name="user_date"/>
+    </label><br/>
+
+    <label>
+        Month:
+        <input type="month" name="user_date"/>
+    </label><br/>
+    <label>
+        Week:
+        <input type="week" name="user_date"/>
+    </label><br/>
+    <label>
+        Time:
+        <input type="time" name="user_date"/>
+    </label><br/>
+    <label>
+        Date and time:
+        <input type="datetime" name="user_date"/>
+    </label><br/>
+    <label>
+        Date and time local:
+        <input type="datetime-local" name="user_date_local"/>
+    </label><br/>
+
+    <pre>HTML5 拥有多个可供选取日期和时间的新输入类型：
+date - 选取日、月、年
+month - 选取月、年
+week - 选取周和年
+time - 选取时间（小时和分钟）
+datetime - 选取时间、日、月、年（UTC 时间）
+datetime-local - 选取时间、日、月、年（本地时间）</pre>
+
+    <label>
+        What's special of Search field?
+        <input type="search" name="search_field"/>
+    </label><br/>
+
+
+</form>
+
+
+<h2>HTML5 的新的表单元素</h2>
+<pre>
+    HTML5 拥有若干涉及表单的元素和属性。
+    本章介绍以下新的表单元素：
+    datalist
+    keygen 稍微有点doubi
+    output</pre>
+
+<form action="#" method="get">
+    Webpage: <input type="url" list="url_list" name="link" />
+    <datalist id="url_list">
+        <option label="W3School" value="http://www.w3school.com.cn" ></option>
+        <option label="Google" value="http://www.google.com" ></option>
+        <option label="Microsoft" value="http://www.microsoft.com" ></option>
+    </datalist>
+    <input type="submit" />
+</form>
+
+
+<h2>HTML5 服务器发送事件</h2>
+<pre>（server-sent event）允许网页获得来自服务器的更新。
+是 websocket 的基础？TODO</pre>
+
+<h2>本地存储</h2>
+<pre>localStorage 方法
+localStorage 方法存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。
+sessionStorage 方法
+sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。
+
+    都是 window.xxxStorage
+    都是对象，嗯
+</pre>
+
+
+<h2>Web Worker</h2>
+<pre>Web Workers 和 DOM
+由于 web worker 位于外部文件中，它们无法访问下例 JavaScript 对象：
+window 对象
+document 对象
+parent 对象</pre>
+<p>计数: <output id="worker-result"></output></p>
+
+<button onclick="startWorker()">开始 Worker</button>
+<button onclick="stopWorker()">停止 Worker</button>
+<br /><br />
+
+<script src="../js/jquery.min.js"></script>
+<script>
+    var w;
+
+    function startWorker()
+    {
+        if(typeof(Worker)!=="undefined")
+        {
+            if(typeof(w)=="undefined")
+            {
+                w=new Worker("../js/demo_workers.js");
+            }
+            w.onmessage = function (event) {
+                document.getElementById("worker-result").innerHTML=event.data;
+            };
+        }
+        else
+        {
+            document.getElementById("worker-result").innerHTML="Sorry, your browser does not support Web Workers...";
+        }
+    }
+
+    function stopWorker()
+    {
+        w.terminate();
+    }
+</script>
+<script>
+    function resCalc()
+    {
+        numA=document.getElementById("num_a").value;
+        numB=document.getElementById("num_b").value;
+        document.getElementById("output-result").value=Number(numA)+Number(numB);
+    }
+</script>
+</body>
+</html>
