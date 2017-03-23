@@ -824,7 +824,7 @@ p.wrap-and-shadow,p.no-wrap
     width:11em;
     font-family: monospace;
     border:1px solid #000000;
-    text-shadow: 0px 0px 30px yellow;
+    text-shadow: 0 0 30px yellow;
 }
 
 p.wrap-and-shadow{
@@ -865,7 +865,7 @@ table.cheat-sheet td,table.cheat-sheet th{
 
 div.Sansation-Light
 {
-    font-family:Sansation-Light;
+    font-family: Sansation-Light, serif;
 }
 
 
@@ -878,8 +878,8 @@ div.Sansation-Light
     margin: 50px;
     padding:10px;
     border: 1px solid black;
-    perspective:150;
-    -webkit-perspective: 150; /* Safari and Chrome */
+    perspective:150px;
+    -webkit-perspective: 150px; /* Safari and Chrome */
 }
 
 #perspective-div-in
@@ -958,12 +958,12 @@ div.trans-multi:hover
 
 @keyframes mymove
 {
-    from {left:0px;}
+    from {left:0;}
     to {left:300px;}
 }
 
 @-webkit-keyframes mymove /* Safari and Chrome */
 {
-    from {left:0px;}
+    from {left:0;}
     to {left:300px;}
 }

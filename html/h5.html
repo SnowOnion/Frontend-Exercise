@@ -58,8 +58,8 @@ required
 
 <p>使用 output 元素的简易计算器：</p>
 <form onsubmit="return false" oninput="resCalc();">
-    <input id="num_a" /> +
-    <input id="num_b" /> =
+    <input id="num_a"  title=""/> +
+    <input id="num_b"  title=""/> =
     <output id="output-result" ></output>
 </form>
 
@@ -151,7 +151,10 @@ datetime-local - 选取时间、日、月、年（本地时间）</pre>
     output</pre>
 
 <form action="#" method="get">
-    Webpage: <input type="url" list="url_list" name="link" />
+    <label>
+        Webpage:
+        <input type="url" list="url_list" name="link"/>
+    </label>
     <datalist id="url_list">
         <option label="W3School" value="http://www.w3school.com.cn" ></option>
         <option label="Google" value="http://www.google.com" ></option>
@@ -218,8 +221,8 @@ parent 对象</pre>
 <script>
     function resCalc()
     {
-        numA=document.getElementById("num_a").value;
-        numB=document.getElementById("num_b").value;
+        var numA=document.getElementById("num_a").value;
+        var numB=document.getElementById("num_b").value;
         document.getElementById("output-result").value=Number(numA)+Number(numB);
     }
 </script>
